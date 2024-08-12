@@ -2,7 +2,7 @@
 App({
     globalData: {
         userInfo: null,
-        host: 'http://ranktool.888.com'
+        host: 'http://ranktool.winndoo.cn'
     },
     onLaunch() {},
     onShow() {

@@ -29,10 +29,20 @@ Page({
             },
             success: (res) => {
                 console.log(res.data);
-                wx.setStorageSync('username', res.data.data.email)
-                wx.switchTab({
-                    url: '/pages/index/index'
-                })
+                if(res.data.code == 0)
+                {
+                    wx.setStorageSync('username', res.data.data.email)
+                    wx.switchTab({
+                        url: '/pages/index/index'
+                    })
+                }
+                else
+                {
+                    wx.showToast({
+                        icon: 'none',
+                        title: res.data.msg
+                    })
+                }
             },
             fail: (err) => {
                 console.log(err);

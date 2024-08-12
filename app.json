@@ -4,10 +4,7 @@
         "pages/home/index",
         "pages/login/index",
         "pages/email_login/index",
-        "pages/bind_email/index",
-        "pages/login3/index",
-        "pages/logs/logs",
-        "pages/one/one"
+        "pages/bind_email/index"
     ],
     "tabBar": {
         "list": [{

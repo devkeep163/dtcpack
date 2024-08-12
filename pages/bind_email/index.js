@@ -1,8 +1,9 @@
 const app = getApp()
 Page({
     data: {
-        email: '',
-        phone: ''
+        email: "",
+        phone: "",
+        code: ""
     },
     onLoad: function (options) {
         console.log(options);
@@ -10,24 +11,27 @@ Page({
             phone: options.phone
         })
     },
-
+    sendEmailCode: function() {
+        app.sendEmailCode(this.data.email)
+    },
     // 发送邮件
-    send: function () {
+    bind: function () {
         wx.showLoading({
             title: '请稍后...',
         })
         wx.request({
-            url: app.globalData.host + '/miniapp/email/login',
+            url: app.globalData.host + '/miniapp/email/bind',
             method: 'POST',
             data: {
                 email: this.data.email,
-                phone: this.data.phone
+                phone: this.data.phone,
+                code: this.data.code
             },
             success: (res) => {
                 console.log(res.data);
-                wx.showToast({
-                    icon: 'none',
-                    title: res.data.msg,
+                wx.setStorageSync('username', res.data.data.email)
+                wx.switchTab({
+                    url: '/pages/index/index'
                 })
             },
             fail: (err) => {

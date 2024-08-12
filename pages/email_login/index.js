@@ -2,13 +2,17 @@ const app = getApp()
 Page({
     data: {
         isAgreed: true,
-        email: ''
+        email: "",
+        code: ""
     },
     onLoad: function () {
         // 页面加载时的逻辑
     },
-    // 发送邮件
-    send: function () {
+    sendEmailCode: function() {
+        app.sendEmailCode(this.data.email)
+    },
+    // 登录
+    login: function () {
         wx.showLoading({
             title: '请稍后...',
         })
@@ -16,19 +20,14 @@ Page({
             url: app.globalData.host + '/miniapp/email/login',
             method: 'POST',
             data: {
-                email: this.data.email
+                email: this.data.email,
+                code: this.data.code
             },
             success: (res) => {
                 console.log(res.data);
-                if (res.data.code == 0) {
-                    wx.setStorageSync('username', res.data.data.email)
-                    wx.switchTab({
-                        url: '/pages/index/index'
-                    })
-                }
-                wx.showToast({
-                    icon: 'none',
-                    title: res.data.msg
+                wx.setStorageSync('username', res.data.data.email)
+                wx.switchTab({
+                    url: '/pages/index/index'
                 })
             },
             fail: (err) => {

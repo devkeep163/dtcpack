@@ -15,7 +15,7 @@ App({
         if (!username) {
             console.log(username);
             wx.navigateTo({
-                url: '/pages/one/one'
+                url: '/pages/login/index'
             })
         }
     },
@@ -35,9 +35,19 @@ App({
             success: (res) => {
                 console.log(res.data);
                 if (res.data.code == 0) {
-                    wx.redirectTo({
-                        url: '/pages/bind_email/index?phone=' + res.data.data.phone
-                    })
+                    if(res.data.data.email)
+                    {
+                        wx.setStorageSync('username', res.data.data.email)
+                        wx.switchTab({
+                            url: '/pages/index/index'
+                        })
+                    }
+                    else
+                    {
+                        wx.redirectTo({
+                            url: '/pages/bind_email/index?phone=' + res.data.data.phone
+                        })
+                    }
                 } else {
                     wx.showToast({
                         title: res.data.msg,
@@ -46,6 +56,31 @@ App({
             },
             fail: (err) => {
                 console.error('获取手机号失败', err);
+            },
+            complete: () => {
+                wx.hideLoading()
+            }
+        });
+    },
+    // 发送邮箱验证码
+    sendEmailCode: function(email) {
+        wx.showLoading({
+            title: '发送中...',
+        })
+        wx.request({
+            url: this.globalData.host + '/miniapp/email/send/verification',
+            method: 'POST',
+            data: {
+                email: email
+            },
+            success: (res) => {
+                console.log(res.data);
+                wx.showToast({
+                    title: res.data.msg
+                })
+            },
+            fail: (err) => {
+                console.log(err);
             },
             complete: () => {
                 wx.hideLoading()

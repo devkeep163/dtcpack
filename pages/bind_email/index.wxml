@@ -1,13 +1,23 @@
 <view class="container">
-    <image class="logo" src="https://dtcpack.cn/assets/images/logo/logo.png" mode="aspectFit"></image>
-    <view class="form">
-        <view class="input-title">绑定邮箱</view>
-        <view class="input-desc">我们将向您的邮箱发送一封验证邮件，请查收并点击链接完成验证</view>
-        <input class="input" type="text" placeholder="请输入邮箱" model:value="{{email}}" />
-        <button class="login-btn" bindtap="send">发送验证邮件</button>
+    <view class="logo-container">
+        <image src="/static/icons/logo.png" class="logo" mode="widthFix"></image>
     </view>
-    <view></view>
-    <view></view>
-    <view></view>
-    <view></view>
+    <view class="form">
+        <view class="box"></view>
+        <view class="input-container">
+            <input type="text" placeholder="请输入要绑定的邮箱" class="input" model:value="{{email}}"></input>
+        </view>
+        <view class="input-extra-container">
+            <input type="text" placeholder="邮箱验证码" class="input" model:value="{{code}}"></input>
+            <button class="send-code-button" bindtap="sendEmailCode">发送验证码</button>
+        </view>
+        <view class="login-button-container">
+            <button class="login-button" bindtap="bind">立即绑定</button>
+        </view>
+        <view class="other-container">
+            <navigator url="/pages/login/index" open-type="redirect">
+                <text class="register-link">帐户密码登录</text>
+            </navigator>
+        </view>
+    </view>
 </view>

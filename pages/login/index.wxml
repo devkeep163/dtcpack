@@ -1,43 +1,35 @@
 <view class="container">
-    <image class="logo" src="https://dtcpack.cn/assets/images/logo/logo.png" mode="aspectFit"></image>
+    <view class="logo-container">
+        <image src="/static/icons/logo.png" class="logo" mode="widthFix"></image>
+    </view>
     <view class="form">
-        <view class="input-title">请登录</view>
-        <input class="input" type="text" placeholder="请输入用户名或手机号" model:value="{{username}}" />
-        <input class="input" type="password" placeholder="请输入密码" model:value="{{password}}" />
-        <!-- <view class="forgot-password">忘记密码?</view> -->
-        <button class="login-btn" bindtap="onLogin">登录</button>
-        <view class="other-register">
-            <!-- <view class="other-register-account register">
-                没有账号?
-                <navigator url="/pages/home/index" open-type="redirect">
-                    <text class="register-link">注册</text>
-                </navigator>
-            </view> -->
-            <view class="other-register-eamil register">
-                <navigator url="/pages/email_login/index" open-type="redirect">
-                    <text class="register-link">邮箱验证登录</text>
-                </navigator>
+        <view class="box"></view>
+        <view class="input-container">
+            <input type="text" placeholder="请输入邮箱或手机号" class="input" model:value="{{username}}"></input>
+        </view>
+        <view class="input-container">
+            <input type="password" placeholder="请输入密码" class="input" model:value="{{password}}"></input>
+        </view>
+        <view class="checkbox-container">
+            <checkbox class="checkbox" model:value="{{password}}" checked="{{isAgreed}}"></checkbox>
+            <text class="privacy-text">已阅读并同意 <text class="privacy-policy">《隐私政策》</text></text>
+        </view>
+        <view class="login-button-container">
+            <button class="login-button" bindtap="onLogin">登录</button>
+        </view>
+        <view class="other-container">
+            <navigator url="/pages/email_login/index" open-type="redirect">
+                <text class="register-link">邮箱验证登录</text>
+            </navigator>
+        </view>
+
+        <view class="footer-container">
+            <view>其它登录方式</view>
+            <view class="wechat-img-container">
+                <button class="auth-button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumberAndUserInfo">
+                    <image src="/static/icons/wechat.png" class="wechat"></image>
+                </button>
             </view>
         </view>
-    </view>
-    <view class="other-login">
-        <view class="divider">
-            <view class="line"></view>
-            <view class="text">其他登录方式</view>
-            <view class="line"></view>
-        </view>
-        <view class="wechat-login">
-            <button class="auth-button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumberAndUserInfo">
-                <text class="button-text">微信登录</text>
-            </button>
-        </view>
-    </view>
-    <view class="agreement">
-        <checkbox-group>
-            <label class="checkbox-wrapper">
-                <checkbox value="agree" checked="{{isAgreed}}" bindtap="toggleAgreement" />
-                <text class="agreement-text">已阅读并同意服务协议</text>
-            </label>
-        </checkbox-group>
     </view>
 </view>

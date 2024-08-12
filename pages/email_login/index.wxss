@@ -2,153 +2,106 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40rpx;
     background-color: #8c52ff;
-    min-height: 100vh;
+    height: 100vh;
+    padding: 0rpx;
+}
+
+.logo-container {
+    width: 100%;
+    text-align: center;
 }
 
 .logo {
-    width: 350rpx;
-    height: 300rpx;
+    margin-top: 50rpx;
+    width: 60%;
 }
 
-.input-title {
-    text-align: center;
-    padding: 20rpx;
-    font-weight: bolder;
-    color: #666;
+.box {
+    height: 50rpx;
 }
-
 .form {
-    width: 92%;
-    background-color: white;
-    border-radius: 20rpx;
-    padding: 50rpx;
+    border-top-left-radius: 30rpx;
+    border-top-right-radius: 30rpx;
+
+    width: 100%;
+    height: 80vh;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.input-container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    margin-top: 40rpx;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-extra-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40rpx;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.send-code-button {
+    color: #8c52ff;
+    font-size: small;
 }
 
 .input {
-    height: 80rpx;
-    border: 1rpx solid #e0e0e0;
-    border-radius: 10rpx;
-    margin-bottom: 20rpx;
-    padding: 0 20rpx;
+    width: 100% !important;
+    padding: 20rpx;
+}
+
+.checkbox-container {
+    width: 80%;
+    margin-top: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     font-size: 28rpx;
 }
 
-.forgot-password {
-    text-align: right;
-    font-size: 24rpx;
-    color: #8c52ff;
-    margin-bottom: 20rpx;
+.login-button-container {
+    width: 80%;
+    margin-top: 50rpx;
 }
 
-.login-btn {
+.login-button {
     width: 100% !important;
-    height: 80rpx;
     background-color: #8c52ff;
-    color: white;
-    border-radius: 10rpx;
-    font-size: 32rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 15rpx 0;
+    color: #fff;
 }
 
-.other-register {
-    display: flex;
-    justify-content: space-between
-}
-
-.register {
-    text-align: center;
-    font-size: 24rpx;
-    margin-top: 20rpx;
-    display: flex;
-}
-
-.register-link {
-    color: #8c52ff;
-}
-
-.other-login {
+.other-container {
     margin-top: 40rpx;
-    width: 100%;
+    font-size: 24rpx;
 }
 
-.divider {
+.footer-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 20rpx;
+    margin-top: 100rpx;
+    font-size: 26rpx;
+    color: #999;
 }
 
+.wechat {
+    margin-top: 30rpx;
+    width: 60rpx;
+    height: 60rpx;
+}
 .auth-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 240rpx !important;
-    height: 48rpx;
-    background-color: #fff;
-    color: #333;
-    border-radius: 44rpx;
-    /* box-shadow: 0 6rpx 12rpx rgba(7, 193, 96, 0.2); */
-    transition: all 0.3s ease;
-    font-size: 24rpx;
-    font-weight: normal;
-    margin-top: 15rpx;
-}
-
-.line {
-    flex: 1;
-    height: 1rpx;
-    background-color: #e0e0e0;
-}
-
-.text {
-    padding: 0 20rpx;
-    color: white;
-    font-size: 24rpx;
-}
-
-.wechat-login {
-    display: flex;
-    justify-content: center;
-}
-
-.wechat-icon {
-    width: 80rpx;
-    height: 80rpx;
-}
-
-
-
-
-.checkbox-wrapper {
-    display: flex;
-    align-items: center;
-}
-.checkbox-wrapper checkbox {
-    transform: scale(0.8);
-}
-.checkbox-wrapper .wx-checkbox-input {
-    width: 30rpx;
-    height: 30rpx;
-    border-radius: 6rpx;
-}
-.checkbox-wrapper .wx-checkbox-input.wx-checkbox-input-checked {
-    background: #007aff;
-    border-color: #007aff;
-}
-.checkbox-wrapper .wx-checkbox-input.wx-checkbox-input-checked::before {
-    content: '\2714';
-    color: #fff;
-    font-size: 20rpx;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.agreement-text {
-    font-size: 24rpx;
-    color: #fff;
+    background: none;
 }

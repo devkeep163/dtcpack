@@ -10,8 +10,9 @@ Page({
     },
 
     onLogin: function () {
-        console.log(this.data.username);
-        console.log(app.globalData.host);
+        wx.showLoading({
+            title: '登录中',
+        })
         wx.request({
             url: app.globalData.host + '/miniapp/login',
             method: 'POST',
@@ -34,6 +35,9 @@ Page({
                     icon: 'none',
                     title: res.data.msg
                 })
+            },
+            complete() {
+                wx.hideLoading()
             },
             fail(err) {
                 console.log(err);

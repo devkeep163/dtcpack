@@ -1,0 +1,154 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40rpx;
+    background-color: #8c52ff;
+    min-height: 100vh;
+}
+
+.logo {
+    width: 350rpx;
+    height: 300rpx;
+}
+
+.input-title {
+    text-align: center;
+    padding: 20rpx;
+    font-weight: bolder;
+    color: #666;
+}
+
+.form {
+    width: 92%;
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 50rpx;
+}
+
+.input {
+    height: 80rpx;
+    border: 1rpx solid #e0e0e0;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+    padding: 0 20rpx;
+    font-size: 28rpx;
+}
+
+.forgot-password {
+    text-align: right;
+    font-size: 24rpx;
+    color: #8c52ff;
+    margin-bottom: 20rpx;
+}
+
+.login-btn {
+    width: 100% !important;
+    height: 80rpx;
+    background-color: #8c52ff;
+    color: white;
+    border-radius: 10rpx;
+    font-size: 32rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15rpx 0;
+}
+
+.other-register {
+    display: flex;
+    justify-content: space-between
+}
+
+.register {
+    text-align: center;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+    display: flex;
+}
+
+.register-link {
+    color: #8c52ff;
+}
+
+.other-login {
+    margin-top: 40rpx;
+    width: 100%;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.auth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 240rpx !important;
+    height: 48rpx;
+    background-color: #fff;
+    color: #333;
+    border-radius: 44rpx;
+    /* box-shadow: 0 6rpx 12rpx rgba(7, 193, 96, 0.2); */
+    transition: all 0.3s ease;
+    font-size: 24rpx;
+    font-weight: normal;
+    margin-top: 15rpx;
+}
+
+.line {
+    flex: 1;
+    height: 1rpx;
+    background-color: #e0e0e0;
+}
+
+.text {
+    padding: 0 20rpx;
+    color: white;
+    font-size: 24rpx;
+}
+
+.wechat-login {
+    display: flex;
+    justify-content: center;
+}
+
+.wechat-icon {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+
+
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+}
+.checkbox-wrapper checkbox {
+    transform: scale(0.8);
+}
+.checkbox-wrapper .wx-checkbox-input {
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 6rpx;
+}
+.checkbox-wrapper .wx-checkbox-input.wx-checkbox-input-checked {
+    background: #007aff;
+    border-color: #007aff;
+}
+.checkbox-wrapper .wx-checkbox-input.wx-checkbox-input-checked::before {
+    content: '\2714';
+    color: #fff;
+    font-size: 20rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.agreement-text {
+    font-size: 24rpx;
+    color: #fff;
+}

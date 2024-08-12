@@ -1,0 +1,33 @@
+<view class="container">
+    <view class="logo-container">
+        <image src="/static/icons/logo.png" class="logo" mode="widthFix"></image>
+    </view>
+    <view class="form">
+        <view class="box"></view>
+        <view class="input-container">
+            <input type="text" placeholder="请输入邮箱或手机号" class="input"></input>
+        </view>
+        <view class="input-container">
+            <input type="password" placeholder="请输入密码" class="input"></input>
+        </view>
+        <view class="checkbox-container">
+            <checkbox class="checkbox"></checkbox>
+            <text class="privacy-text">已阅读并同意 <text class="privacy-policy">《隐私政策》</text></text>
+        </view>
+        <view class="login-button-container">
+            <button class="login-button">登录</button>
+        </view>
+        <view class="other-container">
+            <navigator url="/pages/email_login/index" open-type="redirect">
+                <text class="register-link">邮箱验证登录</text>
+            </navigator>
+        </view>
+        
+        <view class="footer-container">
+            <view>其它登录方式</view>
+            <view class="wechat-img-container">
+                <image src="/static/icons/wechat.png" class="wechat"></image>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="content">
+        <text class="title">请登录</text>
+    </view>
+    <button class="auth-button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumberAndUserInfo">
+        <text class="button-text">立即授权登录</text>
+    </button>
+
+    <!-- <button class="auth-button" bindtap="getUserProfile">
+        <text class="button-text">立即授权登录</text>
+    </button> -->
+</view>

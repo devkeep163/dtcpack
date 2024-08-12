@@ -1,0 +1,13 @@
+<view class="container">
+    <image class="logo" src="https://dtcpack.cn/assets/images/logo/logo.png" mode="aspectFit"></image>
+    <view class="form">
+        <view class="input-title">绑定邮箱</view>
+        <view class="input-desc">我们将向您的邮箱发送一封验证邮件，请查收并点击链接完成验证</view>
+        <input class="input" type="text" placeholder="请输入邮箱" model:value="{{email}}" />
+        <button class="login-btn" bindtap="send">发送验证邮件</button>
+    </view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+</view>

@@ -1,0 +1,41 @@
+<view class="container">
+    <image class="logo" src="https://dtcpack.cn/assets/images/logo/logo.png" mode="aspectFit"></image>
+    <view class="form">
+        <view class="input-title">邮箱验证</view>
+        <input class="input" type="text" placeholder="请输入邮箱" model:value="{{email}}" />
+        <button class="login-btn" bindtap="send">发送验证邮件</button>
+        <view class="other-register">
+            <!-- <view class="other-register-account register">
+                没有账号?
+                <navigator url="/pages/home/index" open-type="redirect">
+                    <text class="register-link">注册</text>
+                </navigator>
+            </view> -->
+            <view class="other-register-eamil register">
+                <navigator url="/pages/login/index" open-type="redirect">
+                    <text class="register-link">帐户密码登录</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="other-login">
+        <view class="divider">
+            <view class="line"></view>
+            <view class="text">其他登录方式</view>
+            <view class="line"></view>
+        </view>
+        <view class="wechat-login">
+            <button class="auth-button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumberAndUserInfo">
+                <text class="button-text">微信登录</text>
+            </button>
+        </view>
+    </view>
+    <view class="agreement">
+        <checkbox-group>
+            <label class="checkbox-wrapper">
+                <checkbox value="agree" checked="{{isAgreed}}" bindtap="toggleAgreement" />
+                <text class="agreement-text">已阅读并同意服务协议</text>
+            </label>
+        </checkbox-group>
+    </view>
+</view>

@@ -1,0 +1,30 @@
+<view class="container">
+    <view class="header">
+        <text class="title">快速对网站进行<text class="highlight">30+项</text>重要的SEO诊断获取改进意见</text>
+    </view>
+
+    <view class="content">
+        <view class="input-box">
+            <image class="input-icon" src="/static/icons/one.png" />
+            <input placeholder="必填，示例 https://www.wfmdoc.com" placeholder-class="input-placeholder" />
+        </view>
+
+        <view class="picker">
+            <image class="picker-icon" src="/static/icons/two.png" />
+            <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}" class="arrow-picker">
+                <view class="picker-text">{{countries[countryIndex]}}</view>
+            </picker>
+            <image class="arrow-icon" src="/static/icons/down.png" />
+        </view>
+
+        <view class="picker">
+            <image class="picker-icon" src="/static/icons/three.png" />
+            <picker bindchange="bindLanguageChange" value="{{languageIndex}}" range="{{languages}}" class="arrow-picker">
+                <view class="picker-text">{{languages[languageIndex]}}</view>
+            </picker>
+            <image class="arrow-icon" src="/static/icons/down.png" />
+        </view>
+
+        <button class="start-button">开始诊断</button>
+    </view>
+</view>

@@ -1,0 +1,83 @@
+<view class="container">
+    <view class="header">+ 新建诊断</view>
+
+    <view class="item">
+        <view class="main-info">
+            <view class="url-container">
+                <text class="label">网址：</text>
+                <text class="url">https://www.shein.com</text>
+            </view>
+            <view class="score-container good">
+                <image src="/static/icons/good.png" mode="aspectFit"></image>
+                <text class="score">90分</text>
+            </view>
+        </view>
+        <view class="sub-info">
+            <view class="country-language">
+                <text>国家：美国</text>
+                <text>语言：英语</text>
+            </view>
+        </view>
+        <view class="footer-info">
+            <view class="create-date">
+                <text>创建时间:2024-07-11</text>
+            </view>
+            <view class="share-icon">
+                <image src="/static/icons/share.png" mode="aspectFit"></image>
+            </view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="main-info">
+            <view class="url-container">
+                <text class="label">网址：</text>
+                <text class="url">https://www.shein.com</text>
+            </view>
+            <view class="score-container fair">
+                <image src="/static/icons/fair.png" mode="aspectFit"></image>
+                <text class="score">70分</text>
+            </view>
+        </view>
+        <view class="sub-info">
+            <view class="country-language">
+                <text>国家：美国</text>
+                <text>语言：英语</text>
+            </view>
+        </view>
+        <view class="footer-info">
+            <view class="create-date">
+                <text>创建时间:2024-07-11</text>
+            </view>
+            <view class="share-icon">
+                <image src="/static/icons/share.png" mode="aspectFit"></image>
+            </view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="main-info">
+            <view class="url-container">
+                <text class="label">网址：</text>
+                <text class="url">https://www.shein.com</text>
+            </view>
+            <view class="score-container poor">
+                <image src="/static/icons/poor.png" mode="aspectFit"></image>
+                <text class="score">20分</text>
+            </view>
+        </view>
+        <view class="sub-info">
+            <view class="country-language">
+                <text>国家：美国</text>
+                <text>语言：英语</text>
+            </view>
+        </view>
+        <view class="footer-info">
+            <view class="create-date">
+                <text>创建时间:2024-07-11</text>
+            </view>
+            <view class="share-icon">
+                <image src="/static/icons/share.png" mode="aspectFit"></image>
+            </view>
+        </view>
+    </view>
+
+</view>

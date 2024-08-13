@@ -1,0 +1,27 @@
+<view class="container">
+
+
+
+    <view class="item">
+        <image class="picker-icon" src="/static/icons/two.png" />
+        <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}" class="arrow-picker">
+            <view class="picker-text">{{countries[countryIndex]}}</view>
+        </picker>
+        <image class="arrow-icon" src="/static/icons/down.png" />
+    </view>
+
+    <view class="item">
+        <image class="picker-icon" src="/static/icons/three.png" />
+        <picker bindchange="bindLanguageChange" value="{{languageIndex}}" range="{{languages}}" class="arrow-picker">
+            <view class="picker-text">{{languages[languageIndex]}}</view>
+        </picker>
+        <image class="arrow-icon" src="/static/icons/down.png" />
+    </view>
+
+    <view class="item">
+        <image class="input-icon" src="/static/icons/one.png" />
+        <input placeholder="请输入域名或网址" placeholder-class="input-placeholder" />
+    </view>
+
+    <view class="footer">开始诊断</view>
+</view>

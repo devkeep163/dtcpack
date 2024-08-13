@@ -12,10 +12,16 @@ App({
     // 会话校验
     checkSession() {
         const username = wx.getStorageSync('username') || null
+        console.log(username);
         if (!username) {
-            console.log(username);
+            // wx.navigateTo({
+            //     url: '/pages/login/index'
+            // })
+        }
+        else
+        {
             wx.navigateTo({
-                url: '/pages/login/index'
+                url: '/pages/one/index'
             })
         }
     },

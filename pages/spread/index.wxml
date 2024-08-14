@@ -1,0 +1,81 @@
+<view class="container">
+    <view class="nav-container">
+        <image src="/static/icons/spread_banner.png" mode="widthFix"></image>
+        <text class="nav-label">已推广人数</text>
+        <text class="nav-number">5</text>
+    </view>
+
+    <view class="item">
+        <view class="main-info" bind:tap="openPopup">
+            <view class="url-container">
+                <image src="/static/icons/profile_active.png" class="avatar"></image>
+                <view class="main-info-text">
+                    <text class="label">邮箱：363927173@qq.com</text>
+                    <text class="label">姓名：李朋 注册时间：2024-01-01</text>
+                </view>
+            </view>
+            <view class="arrow-icon"></view>
+        </view>
+        <view class="footer-info">
+            <view class="create-date">
+                <text>注册来源: https://www.baidu.com</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="item">
+        <view class="main-info" bind:tap="openPopup">
+            <view class="url-container">
+                <image src="/static/icons/profile_active.png" class="avatar"></image>
+                <view class="main-info-text">
+                    <text class="label">邮箱：363927173@qq.com</text>
+                    <text class="label">姓名：李朋 注册时间：2024-01-01</text>
+                </view>
+            </view>
+            <view class="arrow-icon"></view>
+        </view>
+        <view class="footer-info">
+            <view class="create-date">
+                <text>注册来源: https://www.baidu.com</text>
+            </view>
+        </view>
+    </view>
+
+</view>
+
+<!-- 弹窗 -->
+<view class="popup-container" wx:if="{{showPopup}}">
+    <view class="popup-mask" bindtap="closePopup"></view>
+    <view class="popup-content">
+        <view class="menu-list">
+            <view class="menu-item">
+                <image src="/static/icons/profile_active.png" class="avatar"></image>
+                <text class="menu-label">邮箱：363927173</text>
+            </view>
+            <view class="menu-item">
+                <text class="menu-label">姓名：</text>
+                <text class="menu-label">张三</text>
+            </view>
+            <view class="menu-item">
+                <text class="menu-label">电话：</text>
+                <text class="menu-label">18556996468</text>
+            </view>
+            <view class="menu-item">
+                <text class="menu-label">注册时间：</text>
+                <text class="menu-label">2024-08-05</text>
+            </view>
+            <view class="menu-item">
+                <text class="menu-label">注册来源：</text>
+                <text class="menu-label">https://www.google.com</text>
+            </view>
+            <view class="menu-item">
+                <text class="menu-label">公司名称：</text>
+                <view class="menu-right">
+                    <text class="menu-right-value">12</text>
+                    <view class="arrow-icon"></view>
+                </view>
+            </view>
+        </view>
+        <view class="logout-btn">保存</view>
+    </view>
+</view>

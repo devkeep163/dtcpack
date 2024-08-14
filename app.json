@@ -1,11 +1,14 @@
 {
     "pages": [
-        "pages/report/index",
-        "pages/list/index",
-        "pages/create/index",
+        "pages/spread/index",
+        "pages/info/index",
         "pages/three/index",
-        "pages/two/index",
+        "pages/am/index",
         "pages/one/index",
+        "pages/list/index",
+        "pages/report/index",
+        "pages/create/index",
+        "pages/two/index",
         
         "pages/home/index",
         "pages/index/index",
@@ -15,7 +18,7 @@
     ],
     "tabBar": {
         "list": [{
-                "pagePath": "pages/report/index",
+                "pagePath": "pages/spread/index",
                 "text": "网站诊断",
                 "iconPath": "static/icons/home.png",
                 "selectedIconPath": "static/icons/home_active.png"

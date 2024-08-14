@@ -1,13 +1,18 @@
-page {
-    background-color: #8c52ff;
-}
-
 .container {
     padding: 20rpx;
     display: flex;
     flex-direction: column;
     gap: 20rpx;
     position: relative;
+    background-color: #8c52ff;
+    background: linear-gradient(
+        180deg,
+        #8c52ff 0%,
+        #dedede 25%,
+        #f2f2f2 50%,
+        #f2f2f2 75%,
+        #f2f2f2 100%
+    );
 }
 
 .add-button {

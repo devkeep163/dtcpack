@@ -1,5 +1,13 @@
 page {
     background-color: #8c52ff;
+    /* background: linear-gradient(
+        180deg,
+        #8c52ff 0%,
+        #8c52ff 25%,
+        #dedede 50%,
+        #f2f2f2 75%,
+        #8c52ff 100%
+    ); */
 }
 
 .header {
@@ -10,12 +18,13 @@ page {
 }
 
 .title {
-    font-size: 58rpx !important;
+    font-size: 48rpx !important;
 }
 
 .highlight {
     color: #ff7600 !important;
     font-weight: bold;
+    font-size: 62rpx !important;
 }
 
 .title {

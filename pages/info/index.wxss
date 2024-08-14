@@ -4,15 +4,8 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 20rpx;
-
-    background-color: #8c52ff;
-    background: linear-gradient(180deg,
-            #8c52ff 0%,
-            #8c52ff 25%,
-            #ccc 50%,
-            #dedede 75%,
-            #f4f5fc 100%);
+    gap: 30rpx;
+    background-color: #f4f5fc;
 }
 
 .user-info {
@@ -26,6 +19,13 @@
     display: flex;
     align-items: center;
     gap: 20rpx
+}
+
+.avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    border: 2px #a891f5 solid;
 }
 
 .username {
@@ -108,15 +108,15 @@
     border-bottom: none;
 }
 
-.menu-item-left {
+.menu-item-right {
     display: flex;
     align-items: center;
     gap: 20rpx;
+    font-size: 28rpx;
 }
 
-.menu-item-right {
-    font-size: 30rpx;
-    color: #ccc;
+.menu-item-right text {
+    text-align: right;
 }
 
 .menu-label {
@@ -136,8 +136,8 @@
 
 .logout-btn {
     width: 100%;
-    background-color: #fff;
-    color: #000;
+    background-color: #8c52ff;
+    color: #fff;
     border: none;
     border-radius: 20rpx;
     padding: 20rpx 0;
@@ -197,8 +197,7 @@
 }
 
 .popup-title {
-    font-size: 30rpx;
-    margin-bottom: 20rpx;
+    font-size: 26rpx;
     text-align: center;
 }
 
@@ -206,8 +205,8 @@ input {
     border: 1rpx solid #ccc;
     padding: 0 20rpx;
     width: 100%;
-    height: 60rpx !important;
-    line-height: 60rpx !important;
+    height: 80rpx !important;
+    line-height: 80rpx !important;
     box-sizing: border-box;
     border-radius: 10rpx;
 }

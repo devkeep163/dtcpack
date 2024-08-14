@@ -7,44 +7,25 @@
         <view class="user-arrow-icon"></view>
     </view>
 
-    <view class="stats-grid">
-        <view class="stat-item">
-            <image src="/static/icons/account_surplus.png" class="stats-icon"></image>
-            <text class="stat-label">剩余抖名监听任务数</text>
-            <text class="stat-value">1</text>
-        </view>
-        <view class="stat-item">
-            <image src="/static/icons/account_keyword.png" class="stats-icon"></image>
-            <text class="stat-label">剩余点赞集赞秀数量</text>
-            <text class="stat-value">100</text>
-        </view>
-        <view class="stat-item">
-            <image src="/static/icons/account_surplus_number.png" class="stats-icon"></image>
-            <text class="stat-label">剩余抖名监听任务次数</text>
-            <text class="stat-value">5985</text>
-        </view>
-        <view class="stat-item">
-            <image src="/static/icons/account_monitor.png" class="stats-icon"></image>
-            <text class="stat-label">剩余集赞监控任务数</text>
-            <text class="stat-value">2</text>
-        </view>
-        <view class="stat-item">
-            <image src="/static/icons/account_web_monitor.png" class="stats-icon"></image>
-            <text class="stat-label">剩余抖音恢复任务数</text>
-            <text class="stat-value">1</text>
-        </view>
-        <view class="stat-item">
-            <image src="/static/icons/account_diagnosis.png" class="stats-icon"></image>
-            <text class="stat-label">网店诊断(7天/次)</text>
-            <text class="stat-value">7</text>
-        </view>
-    </view>
-
     <view class="menu-list">
         <view class="menu-item" bind:tap="repot">
             <view class="menu-item-left">
                 <image src="/static/icons/account_report.png" class="menu-icon"></image>
                 <text class="menu-label">我的报告</text>
+            </view>
+            <view class="arrow-icon"></view>
+        </view>
+        <view class="menu-item">
+            <view class="menu-item-left">
+                <image src="/static/icons/account_spread.png" class="menu-icon"></image>
+                <text class="menu-label">推广列表</text>
+            </view>
+            <view class="arrow-icon"></view>
+        </view>
+        <view class="menu-item">
+            <view class="menu-item-left">
+                <image src="/static/icons/account_need_list.png" class="menu-icon"></image>
+                <text class="menu-label">需求列表</text>
             </view>
             <view class="arrow-icon"></view>
         </view>
@@ -79,6 +60,7 @@
     </view>
 
     <view class="logout-btn">退出登录</view>
+    <view style="height: 40vh;"></view>
 </view>
 
 

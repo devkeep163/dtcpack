@@ -7,9 +7,10 @@
 }
 
 .arrow-icon {
-    width: 10px;
-    height: 10px;
+    width: 20rpx !important;
+    height: 20rpx !important;
     border-top: 2px solid #c8c9cc;
     border-right: 2px solid #c8c9cc;
     transform: rotate(45deg);
+    margin-right: 5rpx;
 }

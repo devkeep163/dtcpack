@@ -1,24 +1,26 @@
 {
     "pages": [
+        "pages/one/index",
+        "pages/loading/index",
+        "pages/list/index",
         "pages/spread/index",
         "pages/info/index",
-        "pages/three/index",
+        "pages/result/index",
+        "pages/result_item/index",
+        "pages/result_item_detail/index",
         "pages/am/index",
-        "pages/one/index",
-        "pages/list/index",
         "pages/report/index",
         "pages/create/index",
-        "pages/two/index",
+        "pages/agreement/index",
         
         "pages/home/index",
-        "pages/index/index",
         "pages/login/index",
         "pages/email_login/index",
         "pages/bind_email/index"
     ],
     "tabBar": {
         "list": [{
-                "pagePath": "pages/spread/index",
+                "pagePath": "pages/one/index",
                 "text": "网站诊断",
                 "iconPath": "static/icons/home.png",
                 "selectedIconPath": "static/icons/home_active.png"

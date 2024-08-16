@@ -9,7 +9,13 @@ Page({
     },
     add: function () {
         wx.redirectTo({
-            url: '/pages/bind_email/index'
+            url: '/pages/create/index'
+        })
+    },
+    // SEO规则诊断
+    seoRule: function() {
+        wx.navigateTo({
+            url: '/pages/result_item/index'
         })
     }
 });

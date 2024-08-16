@@ -25,7 +25,6 @@
     width: 80rpx;
     height: 80rpx;
     border-radius: 50%;
-    border: 2px #a891f5 solid;
 }
 
 .username {
@@ -136,7 +135,7 @@
 
 .logout-btn {
     width: 100%;
-    background-color: #8c52ff;
+    background-color: #815df2;
     color: #fff;
     border: none;
     border-radius: 20rpx;
@@ -222,6 +221,6 @@ input {
 }
 
 .save-btn {
-    background-color: #8c52ff;
+    background-color: #815df2;
     color: white;
 }

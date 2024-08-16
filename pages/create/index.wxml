@@ -1,13 +1,10 @@
 <view class="container">
-
-
-
     <view class="item">
         <image class="picker-icon" src="/static/icons/two.png" />
         <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}" class="arrow-picker">
             <view class="picker-text">{{countries[countryIndex]}}</view>
         </picker>
-        <image class="arrow-icon" src="/static/icons/down.png" />
+        <view class="arrow-icon"></view>
     </view>
 
     <view class="item">
@@ -15,7 +12,7 @@
         <picker bindchange="bindLanguageChange" value="{{languageIndex}}" range="{{languages}}" class="arrow-picker">
             <view class="picker-text">{{languages[languageIndex]}}</view>
         </picker>
-        <image class="arrow-icon" src="/static/icons/down.png" />
+        <view class="arrow-icon"></view>
     </view>
 
     <view class="item">
@@ -23,5 +20,5 @@
         <input placeholder="请输入域名或网址" placeholder-class="input-placeholder" />
     </view>
 
-    <view class="footer">开始诊断</view>
+    <view class="footer" bind:tap="startDiagnosis">开始诊断</view>
 </view>

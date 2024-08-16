@@ -1,7 +1,5 @@
 <view class="container">
 
-    <view class="add-button" bindtap="add"></view>
-
     <view class="header">
         <text class="website-url">https://www.shein.com</text>
         <text class="diagnosis-date">诊断时间:2024-07-18</text>
@@ -91,7 +89,7 @@
     </view>
 
     <view class="seo-analysis">
-        <view class="seo-header">
+        <view class="seo-header" bind:tap="seoRule">
             <view class="seo-header-left">
                 <image src="/static/icons/seo.png" class="issue-icon" />
                 <text class="seo-title">SEO项目诊断</text>
@@ -120,3 +118,5 @@
         </view>
     </view>
 </view>
+
+<view class="add-button" bindtap="add"></view>

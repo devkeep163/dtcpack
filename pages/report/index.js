@@ -2,26 +2,22 @@
 const app = getApp()
 Page({
     data: {
-        one: '/static/icons/report-selected.png',
-        two: '/static/icons/share-unselected.png',
-        oneIsActive: true,
-        twoIsActive: false
+        navs: ['网站诊断', '分享案例'],
+        navIcons: [
+            '/static/icons/report-selected.png',
+            '/static/icons/share-selected.png'
+        ],
+        navUnIcons: [
+            '/static/icons/report-unselected.png',
+            '/static/icons/share-unselected.png'
+        ],
+        currentIndex: 0,
     },
 
-    one: function(e) {
+    handleTap(e) {
+        const index = e.currentTarget.dataset.index;
         this.setData({
-            one: '/static/icons/report-selected.png',
-            two: '/static/icons/share-unselected.png',
-            oneIsActive: true,
-            twoIsActive: false
-        })
-    },
-    two: function() {
-        this.setData({
-            one: '/static/icons/report-unselected.png',
-            two: '/static/icons/share-selected.png',
-            oneIsActive: false,
-            twoIsActive: true
-        })
+            currentIndex: index
+        });
     }
 })

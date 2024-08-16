@@ -6,10 +6,10 @@
     flex-direction: column;
     gap: 20rpx;
 
-    background-color: #8c52ff;
+    background-color: #815df2;
     background: linear-gradient(180deg,
-            #8c52ff 0%,
-            #8c52ff 25%,
+            #815df2 0%,
+            #815df2 25%,
             #ccc 50%,
             #dedede 75%,
             #f4f5fc 100%);
@@ -223,6 +223,6 @@ input {
 }
 
 .save-btn {
-    background-color: #8c52ff;
+    background-color: #815df2;
     color: white;
 }

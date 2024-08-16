@@ -1,16 +1,11 @@
 <view class="container">
     <view class="nav-container">
-        <view class="nav-card" bindtap="one">
+        <view class="nav-card {{currentIndex === index ? 'nav-active' : ''}}" wx:for="{{navs}}" wx:key="index" bindtap="handleTap" data-index="{{index}}">
             <view class="icon-container">
-                <image src="{{ one }}" mode="aspectFit" class="icon"></image>
+                <image src="{{ navIcons[index] }}" mode="aspectFit" class="icon" wx:if="{{ currentIndex == index }}"></image>
+                <image src="{{ navUnIcons[index] }}" mode="aspectFit" class="icon" wx:else></image>
             </view>
-            <text class="{{ oneIsActive ? 'nav-text active-color' : 'nav-text default-color' }}">网站诊断</text>
-        </view>
-        <view class="nav-card" bindtap="two">
-            <view class="icon-container">
-                <image src="{{ two }}" mode="aspectFit" class="icon"></image>
-            </view>
-            <text class="{{ twoIsActive ? 'nav-text active-color' : 'nav-text default-color' }}">分享案例</text>
+            <text class="default-color">{{ item }}</text>
         </view>
     </view>
 

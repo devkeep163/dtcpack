@@ -2,10 +2,29 @@
 const app = getApp()
 Page({
     data: {
-        countries: ['美国 (us)', '中国 (cn)', '日本 (jp)'],
+        countries: ['美国 (us)','中国 (cn)'],
         countryIndex: 0,
-        languages: ['英语 (en)', '中文 (zh)', '日语 (ja)'],
+        languages: ['英语 (en)', '中文 (zh)'],
         languageIndex: 0
+    },
+    onLoad() {
+        wx.request({
+            url: app.globalData.host + '/miniapp/languages',
+            method: 'GET',
+            success: (res) => {
+                console.log(res.data);
+                this.setData({
+                    countries: res.data.data.countrys,
+                    languages: res.data.data.languages
+                });
+            },
+            fail(err) {
+                console.log(err);
+                wx.showToast({
+                    title: '网络异常，请检查',
+                })
+            }
+        })
     },
 
     bindCountryChange: function (e) {
@@ -20,11 +39,10 @@ Page({
         })
     },
 
+    // 开始诊断
     startDiagnosis: function () {
-        // 实现诊断逻辑
-        wx.showToast({
-            title: '开始诊断',
-            icon: 'success'
+        wx.navigateTo({
+            url: '/pages/result/index',
         })
     }
 })

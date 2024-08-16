@@ -1,5 +1,5 @@
 <view class="container">
-    <view class="user-info">
+    <view class="user-info" bind:tap="info">
         <view class="user-base">
             <image class="avatar" src="/static/icons/avatar.png" />
             <text class="username">王建国</text>
@@ -69,7 +69,7 @@
             </view>
             <text class="menu-item-right">18556996469</text>
         </view>
-        <view class="menu-item">
+        <view class="menu-item" bind:tap="agreement">
             <view class="menu-item-left">
                 <image src="/static/icons/account_agreement.png" class="menu-icon"></image>
                 <text class="menu-label">用户协议</text>

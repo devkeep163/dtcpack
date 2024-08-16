@@ -14,7 +14,7 @@
             <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}" class="arrow-picker">
                 <view class="picker-text">{{countries[countryIndex]}}</view>
             </picker>
-            <image class="arrow-icon" src="/static/icons/down.png" />
+            <view class="arrow-icon"></view>
         </view>
 
         <view class="picker">
@@ -22,9 +22,10 @@
             <picker bindchange="bindLanguageChange" value="{{languageIndex}}" range="{{languages}}" class="arrow-picker">
                 <view class="picker-text">{{languages[languageIndex]}}</view>
             </picker>
-            <image class="arrow-icon" src="/static/icons/down.png" />
+            <view class="arrow-icon"></view>
         </view>
 
-        <button class="start-button">开始诊断</button>
+        <button class="start-button" bind:tap="startDiagnosis">开始诊断</button>
     </view>
+    
 </view>

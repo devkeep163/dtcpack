@@ -2,8 +2,8 @@ page {
     background-color: #f2f2ff;
 }
 
-.active-color {
-    color: #8c52ff !important;
+.nav-active {
+    color: #815df2 !important;
 }
 
 .container {

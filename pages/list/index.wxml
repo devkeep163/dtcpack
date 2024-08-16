@@ -1,5 +1,5 @@
 <view class="container">
-    <view class="header">+ 新建诊断</view>
+    <view class="header" bind:tap="create">+ 新建诊断</view>
 
     <view class="item">
         <view class="main-info">

@@ -23,6 +23,13 @@ Page({
         })
     },
 
+    // 推广列表
+    spread() {
+        wx.navigateTo({
+            url: '/pages/spread/index',
+        })
+    },
+
     // 用户协议
     agreement() {
         wx.navigateTo({

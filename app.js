@@ -14,9 +14,9 @@ App({
         const username = wx.getStorageSync('username') || null
         console.log(username);
         if (!username) {
-            // wx.navigateTo({
-            //     url: '/pages/login/index'
-            // })
+            wx.navigateTo({
+                url: '/pages/login/index'
+            })
         }
         else
         {
@@ -45,7 +45,7 @@ App({
                     {
                         wx.setStorageSync('username', res.data.data.email)
                         wx.switchTab({
-                            url: '/pages/index/index'
+                            url: '/pages/one/index'
                         })
                     }
                     else

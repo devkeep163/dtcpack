@@ -28,7 +28,7 @@ Page({
                 if (res.data.code == 0) {
                     wx.setStorageSync('username', res.data.data.email)
                     wx.switchTab({
-                        url: '/pages/index/index'
+                        url: '/pages/one/index'
                     })
                 }
                 wx.showToast({

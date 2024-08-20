@@ -2,7 +2,8 @@
 const app = getApp()
 Page({
     data: {
-        countries: ['美国 (us)','中国 (cn)'],
+        url: '',
+        countries: ['美国 (us)', '中国 (cn)'],
         countryIndex: 0,
         languages: ['英语 (en)', '中文 (zh)'],
         languageIndex: 0
@@ -41,8 +42,28 @@ Page({
 
     // 开始诊断
     startDiagnosis: function () {
-        wx.redirectTo({
-            url: '/pages/list/index',
+        console.log(this.data.url);
+        app.request({
+            url: '/miniapp/web_check',
+            isLogin: true,
+            isLoading: true,
+            data: {
+                my_url: this.data.url,
+                country: this.data.countries[this.data.countryIndex],
+                language: this.data.languages[this.data.languageIndex]
+            },
+            success: (res) => {
+                if (res.data.code == 0) {
+                    wx.redirectTo({
+                        url: '/pages/loading/index'
+                    })
+                } else {
+                    wx.showToast({
+                        icon: 'none',
+                        title: res.data.msg,
+                    })
+                }
+            }
         })
     }
 })

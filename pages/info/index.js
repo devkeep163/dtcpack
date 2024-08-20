@@ -6,16 +6,51 @@ Page({
         title: '',
         itemName: '',
         itemValue: '',
-        company: '腾讯科技有限公司',
-        category: 'IT技术支持',
-        surname: '李',
-        name: '大狗',
-        address: '广东省深圳市吴江区通天大道15号2幢1002室',
-        city: '深圳',
-        state: '中国',
+
+        company: '',
+        department: '',
+        last_name: '',
+        first_name: '',
+        address: '',
+        city: '',
+        code: '',
+        country: '',
     },
     onShow() {
-
+        app.request({
+            url: '/miniapp/auth/info',
+            isLogin: true,
+            isLoading: true,
+            success: (res) => {
+                if (res.data.data.info) {
+                    this.setData({
+                        company: res.data.data.info.company || '',
+                        department: res.data.data.info.department || '',
+                        last_name: res.data.data.info.last_name || '',
+                        first_name: res.data.data.info.first_name || '',
+                        address: res.data.data.info.address || '',
+                        city: res.data.data.info.city || '',
+                        code: res.data.data.info.code || '',
+                        country: res.data.data.info.country || '',
+                    })
+                }
+            }
+        })
+    },
+    // 保存
+    save() {
+        app.request({
+            url: '/miniapp/auth/save',
+            method: 'POST',
+            isLogin: true,
+            isLoading: true,
+            data: this.data,
+            success: (res) => {
+                wx.showToast({
+                    title: res.data.msg
+                })
+            }
+        })
     },
 
     // 我的报告

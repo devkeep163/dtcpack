@@ -17,13 +17,40 @@ App({
             wx.navigateTo({
                 url: '/pages/login/index'
             })
-        }
-        else
-        {
+        } else {
             wx.navigateTo({
                 url: '/pages/one/index'
             })
         }
+    },
+
+    // 统一请求
+    request(params) {
+        params.url = this.globalData.host + params.url
+        // 是否登录
+        if (params.isLogin) 
+        {
+            const username = wx.getStorageSync('username') || null
+            if(username) {
+                params.header = {email: username};
+            }else{
+                wx.navigateTo({
+                    url: '/pages/login/index'
+                })
+                return;
+            }
+        }
+
+        // 是否显示加载动画
+        if (params.isLoading) {
+            wx.showLoading({
+                title: '请稍后...',
+            })
+            params.complete = function () {
+                wx.hideLoading();
+            }
+        }
+        wx.request(params);
     },
 
     // 获取用户手机号
@@ -41,15 +68,13 @@ App({
             success: (res) => {
                 console.log(res.data);
                 if (res.data.code == 0) {
-                    if(res.data.data.email)
-                    {
+                    if (res.data.data.email) {
                         wx.setStorageSync('username', res.data.data.email)
+                        wx.setStorageSync('role', res.data.data.role)
                         wx.switchTab({
                             url: '/pages/one/index'
                         })
-                    }
-                    else
-                    {
+                    } else {
                         wx.redirectTo({
                             url: '/pages/bind_email/index?phone=' + res.data.data.phone
                         })
@@ -69,7 +94,7 @@ App({
         });
     },
     // 发送邮箱验证码
-    sendEmailCode: function(email) {
+    sendEmailCode: function (email) {
         wx.showLoading({
             title: '发送中...',
         })

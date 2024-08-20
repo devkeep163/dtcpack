@@ -2,6 +2,7 @@
 const app = getApp()
 Page({
     data: {
+        url: '',
         countries: ['美国 (us)','中国 (cn)'],
         countryIndex: 0,
         languages: ['英语 (en)', '中文 (zh)'],
@@ -41,8 +42,32 @@ Page({
 
     // 开始诊断
     startDiagnosis: function () {
-        wx.navigateTo({
-            url: '/pages/result/index',
+        // wx.navigateTo({
+        //     url: '/pages/result/index',
+        // })
+        console.log(this.data.url);
+        app.request({
+            url: '/miniapp/web_check',
+            isLogin: true,
+            isLoading: true,
+            data: {
+                my_url: this.data.url,
+                country: this.data.countries[this.data.countryIndex],
+                language: this.data.languages[this.data.languageIndex]
+            },
+            success: (res) => {
+                if(res.data.code == 0)
+                {
+                    wx.navigateTo({
+                        url: '/pages/loading/index'
+                    })
+                }else{
+                    wx.showToast({
+                        icon: 'none',
+                        title: res.data.msg,
+                    })
+                }
+            }
         })
     }
 })

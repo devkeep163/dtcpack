@@ -1,37 +1,37 @@
 <view class="container">
     <view class="user-info" bind:tap="info">
         <view class="user-base">
-            <image class="avatar" src="/static/icons/avatar.png" />
-            <text class="username">王建国</text>
+            <image class="avatar" src="{{user.avatar}}" />
+            <text class="username">{{user.name}}</text>
         </view>
         <view class="user-arrow-icon"></view>
     </view>
 
-    <view class="stats-grid">
+    <view class="stats-grid" wx:if="{{role == 'admin'}}">
         <view class="stat-item">
             <image src="/static/icons/account_surplus.png" class="stats-icon"></image>
             <text class="stat-label">剩余排名监测任务数</text>
-            <text class="stat-value">1</text>
+            <text class="stat-value">{{statistics.remainingRankingTasks}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_keyword.png" class="stats-icon"></image>
             <text class="stat-label">排名监测单任务数量最大词数</text>
-            <text class="stat-value">100</text>
+            <text class="stat-value">{{statistics.maxWordCountPerTask}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_surplus_number.png" class="stats-icon"></image>
             <text class="stat-label">剩余排名监测次数</text>
-            <text class="stat-value">5985</text>
+            <text class="stat-value">{{statistics.remainingRankingTimes}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_monitor.png" class="stats-icon"></image>
             <text class="stat-label">剩余竞品监控任务数</text>
-            <text class="stat-value">2</text>
+            <text class="stat-value">{{statistics.remainingCompetitorTasks}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_web_monitor.png" class="stats-icon"></image>
             <text class="stat-label">剩余网页监控任务数</text>
-            <text class="stat-value">1</text>
+            <text class="stat-value">{{statistics.remainingWebTasks}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_diagnosis.png" class="stats-icon"></image>
@@ -48,10 +48,17 @@
             </view>
             <view class="arrow-icon"></view>
         </view>
-        <view class="menu-item" bind:tap="spread">
+        <view class="menu-item" bind:tap="need">
             <view class="menu-item-left">
                 <image src="/static/icons/account_need.png" class="menu-icon"></image>
                 <text class="menu-label">我的需求</text>
+            </view>
+            <view class="arrow-icon"></view>
+        </view>
+        <view class="menu-item" bind:tap="spread" wx:if="{{role != 'admin'}}">
+            <view class="menu-item-left">
+                <image src="/static/icons/account_spread.png" class="menu-icon"></image>
+                <text class="menu-label">推广列表</text>
             </view>
             <view class="arrow-icon"></view>
         </view>
@@ -60,14 +67,14 @@
                 <image src="/static/icons/account_email.png" class="menu-icon"></image>
                 <text class="menu-label">邮箱</text>
             </view>
-            <text class="menu-item-right">363927173@qq.com</text>
+            <text class="menu-item-right">{{user.email}}</text>
         </view>
         <view class="menu-item">
             <view class="menu-item-left">
                 <image src="/static/icons/account_phone.png" class="menu-icon"></image>
                 <text class="menu-label">手机号</text>
             </view>
-            <text class="menu-item-right">18556996469</text>
+            <text class="menu-item-right">{{user.phone}}</text>
         </view>
         <view class="menu-item" bind:tap="agreement">
             <view class="menu-item-left">
@@ -78,7 +85,7 @@
         </view>
     </view>
 
-    <view class="logout-btn">退出登录</view>
+    <view class="logout-btn" bind:tap="logout">退出登录</view>
 </view>
 
 

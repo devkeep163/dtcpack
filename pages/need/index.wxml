@@ -1,0 +1,58 @@
+<view class="container">
+    <view class="header" bind:tap="openPopup">+ 新建需求</view>
+
+
+    <view class="item" wx:for="{{list}}" wx:key="index">
+        <view class="main-info">
+            <view class="url-container">
+                <text class="label">网址：</text>
+                <text class="url">{{item.url}}</text>
+            </view>
+            <view class="score-container">
+                <text wx:if="{{item.status == 1}}">处理中</text>
+                <text wx:else>完成</text>
+            </view>
+        </view>
+        
+        <view class="sub-info">
+            <view class="country-language">
+                <text>姓名：{{item.name}}</text>
+                <text>手机：{{item.phone}}</text>
+            </view>
+        </view>
+        <view class="footer-info">
+            <view class="create-date">
+                <text>公司名称:{{item.company}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+
+<view class="popup-container" wx:if="{{showPopup}}">
+    <view class="popup-mask" bindtap="closePopup"></view>
+    <view class="popup-content">
+        <view class="popup-title">新建需求</view>
+        <view class="popup-item">
+            <!-- <text>公司名称</text> -->
+            <input type="text" placeholder="请输入公司名称" model:value="{{company}}" />
+        </view>
+        <view class="popup-item">
+            <!-- <text>网址</text> -->
+            <input type="text" placeholder="请输入网址" model:value="{{url}}"  />
+        </view>
+        <view class="popup-item">
+            <!-- <text>姓名</text> -->
+            <input type="text" placeholder="请输入姓名" model:value="{{name}}" />
+        </view>
+        <view class="popup-item">
+            <!-- <text>手机号</text> -->
+            <input type="number" placeholder="请输入手机号" model:value="{{phone}}" maxlength="11" />
+        </view>
+        <view class="button-group">
+            <button class="cancel-btn" bindtap="closePopup">取消</button>
+            <button class="save-btn" bindtap="create">保存</button>
+        </view>
+    </view>
+</view>

@@ -17,7 +17,7 @@
 
     <view class="item">
         <image class="input-icon" src="/static/icons/one.png" />
-        <input placeholder="请输入域名或网址" placeholder-class="input-placeholder" />
+        <input model:value="{{url}}" placeholder="请输入域名或网址" placeholder-class="input-placeholder" />
     </view>
 
     <view class="footer" bind:tap="startDiagnosis">开始诊断</view>

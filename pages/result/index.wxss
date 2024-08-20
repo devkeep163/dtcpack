@@ -105,9 +105,13 @@
     align-items: center;
     padding-top: 50rpx;
     box-sizing: border-box;
-    background:
-        radial-gradient(closest-side, white 79%, transparent 80% 100%),
-        conic-gradient(from 0deg, #ff1234 0%, #feca57 37.5%, #48dbfb 75%, #f0f0fe 0);
+    /* background:
+    radial-gradient(closest-side, white 79%, transparent 80% 100%),
+    conic-gradient(from 0deg, 
+      #ff1234 10%, 
+      #feca57 calc(37.5% * var(--percentage, 0) / 100), 
+      #48dbfb calc(50% * var(--percentage, 0) / 100), 
+      #f0f0fe 0); */
 }
 
 .feedback-container {

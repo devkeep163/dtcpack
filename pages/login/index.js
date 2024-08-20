@@ -27,6 +27,7 @@ Page({
                 console.log(res.data);
                 if (res.data.code == 0) {
                     wx.setStorageSync('username', res.data.data.email)
+                    wx.setStorageSync('role', res.data.data.role)
                     wx.switchTab({
                         url: '/pages/one/index'
                     })

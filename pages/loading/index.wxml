@@ -4,7 +4,7 @@
         <image class="person" src="/static/icons/zd-load.png" mode="aspectFit" />
     </view>
     <view class="text-container">
-        <text class="title">诊断正在进行中</text>
+        <text class="title">{{title}}</text>
         <text class="description">点击右上角 , 选择收藏 或添加到我的小程序 , 可以快速查看诊断结果</text>
     </view>
 

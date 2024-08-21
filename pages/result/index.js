@@ -34,9 +34,10 @@ Page({
         })
     },
     // SEO规则诊断
-    seoRule: function() {
+    seoRule: function(e) {
+        const index = e.currentTarget.dataset.index;
         wx.navigateTo({
-            url: '/pages/result_item/index'
+            url: '/pages/result_item/index?index=' + index
         })
     }
 });

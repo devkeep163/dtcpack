@@ -8,7 +8,16 @@ Page({
         toView: ''
     },
     onLoad(params) {
-        console.log(params);
+        this.setData({
+            currentIndex: params.index
+        })
+
+        // 延迟1秒后滚动到第二部分
+        setTimeout(() => {
+            this.setData({
+                toView: 'section' + params.index
+            });
+        }, 1000);
     },
     onShow: function () {
         app.request({

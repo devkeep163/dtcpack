@@ -26,7 +26,7 @@
         </view>
 
         <button class="start-button" bind:tap="startDiagnosis">开始诊断</button>
-        <navigator url="/pages/loading/index">结果</navigator>
+        <navigator url="/pages/loading/index" style="width: 100%; text-align: center; margin-top: 30rpx; font-size: 24rpx; color: #999;">查询最近诊断记录</navigator>
     </view>
     
 </view>

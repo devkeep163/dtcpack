@@ -16,7 +16,7 @@ page {
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-    padding: 100rpx 0;
+    padding: 100rpx 30rpx;
 }
 
 .header {
@@ -41,7 +41,7 @@ page {
 }
 
 .content {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -80,6 +80,8 @@ page {
 input {
     flex: 1;
     font-size: 28rpx;
+    -webkit-appearance: none;
+    outline: none;
 }
 
 .input-placeholder {

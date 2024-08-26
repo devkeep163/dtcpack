@@ -1,6 +1,6 @@
 {
     "pages": [
-        "pages/one/index",
+        "pages/index/index",
         "pages/loading/index",
         "pages/list/index",
         "pages/spread/index",
@@ -21,7 +21,7 @@
     ],
     "tabBar": {
         "list": [{
-                "pagePath": "pages/one/index",
+                "pagePath": "pages/index/index",
                 "text": "网站诊断",
                 "iconPath": "static/icons/home.png",
                 "selectedIconPath": "static/icons/home_active.png"

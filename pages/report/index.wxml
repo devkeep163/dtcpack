@@ -45,6 +45,7 @@
     </view>
 </view>
 
+<view class="bottom-container" bind:tap="create">+ 新建诊断</view>
 
 <view class="modal {{isModalVisible ? 'show' : ''}}">
     <view class="modal-mask" bindtap="hideModal"></view>

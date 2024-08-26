@@ -29,8 +29,9 @@ Page({
                 {
                     wx.setStorageSync('username', res.data.data.email)
                     wx.setStorageSync('role', res.data.data.role)
+                    wx.setStorageSync('isLogin', 1)
                     wx.switchTab({
-                        url: '/pages/one/index'
+                        url: '/pages/index/index'
                     })
                 }
                 else

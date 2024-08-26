@@ -2,43 +2,38 @@
 App({
     globalData: {
         userInfo: null,
-        host: 'http://ranktool.888.com'
+        host: 'http://ranktool.winndoo.cn'
     },
-    onLaunch() {},
+    onLaunch() {
+    },
     onShow() {
-        this.checkSession();
     },
 
     // 会话校验
     checkSession() {
-        const username = wx.getStorageSync('username') || null
-        console.log(username);
-        if (!username) {
-            wx.navigateTo({
-                url: '/pages/login/index'
-            })
-        } else {
-            wx.navigateTo({
-                url: '/pages/one/index'
-            })
-        }
+        return new Promise((resolve, reject) => {
+            const isLogin = wx.getStorageSync('isLogin') || 0
+            if (isLogin) {
+                const username = wx.getStorageSync('username')
+                const role = wx.getStorageSync('role')
+                console.log(role);
+                resolve({ username: username, role: role })
+            } else {
+                wx.navigateTo({
+                    url: '/pages/login/index'
+                })
+            }
+        })
     },
 
     // 统一请求
     request(params) {
         params.url = this.globalData.host + params.url
-        // 是否登录
-        if (params.isLogin) 
-        {
-            const username = wx.getStorageSync('username') || null
-            if(username) {
-                params.header = {email: username};
-            }else{
-                wx.navigateTo({
-                    url: '/pages/login/index'
-                })
-                return;
-            }
+        const username = wx.getStorageSync('username') || null
+        if (username) {
+            params.header = {
+                email: username
+            };
         }
 
         // 是否显示加载动画
@@ -71,8 +66,9 @@ App({
                     if (res.data.data.email) {
                         wx.setStorageSync('username', res.data.data.email)
                         wx.setStorageSync('role', res.data.data.role)
+                        wx.setStorageSync('isLogin', 1)
                         wx.switchTab({
-                            url: '/pages/one/index'
+                            url: '/pages/index/index'
                         })
                     } else {
                         wx.redirectTo({

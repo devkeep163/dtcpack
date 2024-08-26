@@ -45,20 +45,28 @@ Page({
 
     // 网站诊断
     getWebCheckList() {
-        app.request({
-            url: '/miniapp/web_check_list',
-            isLogin: true,
-            isLoading: true,
-            success: (res) => {
-                console.log(res.data.data);
-                let check = res.data.data.check
-                let checkSet = res.data.data.checkSet
-                this.setData({
-                    list: check,
-                    check: check,
-                    checkSet: checkSet
-                })
-            }
+        app.checkSession().then(() => {
+            app.request({
+                url: '/miniapp/web_check_list',
+                isLoading: true,
+                success: (res) => {
+                    console.log(res.data.data);
+                    let check = res.data.data.check
+                    let checkSet = res.data.data.checkSet
+                    this.setData({
+                        list: check,
+                        check: check,
+                        checkSet: checkSet
+                    })
+                }
+            })
+        })
+    },
+
+    // 创建网站诊断
+    create() {
+        wx.redirectTo({
+            url: '/pages/create/index',
         })
     },
 

@@ -1,5 +1,10 @@
 <view class="container">
-    <view class="user-info" bind:tap="info">
+    <view class="user-info" wx:if="{{isLogin == 0}}">
+        <navigator url="/pages/login/index" open-type="navigate">立即登录</navigator>
+        <view class="user-arrow-icon"></view>
+    </view>
+
+    <view class="user-info" bind:tap="info" wx:if="{{isLogin == 1}}">
         <view class="user-base">
             <image class="avatar" src="{{user.avatar}}" />
             <text class="username">{{user.name}}</text>
@@ -48,6 +53,13 @@
             </view>
             <view class="arrow-icon"></view>
         </view>
+        <view class="menu-item" bind:tap="chack">
+            <view class="menu-item-left">
+                <image src="/static/icons/account_report.png" class="menu-icon"></image>
+                <text class="menu-label">网站诊断</text>
+            </view>
+            <view class="arrow-icon"></view>
+        </view>
         <view class="menu-item" bind:tap="need">
             <view class="menu-item-left">
                 <image src="/static/icons/account_need.png" class="menu-icon"></image>
@@ -85,7 +97,7 @@
         </view>
     </view>
 
-    <view class="logout-btn" bind:tap="logout">退出登录</view>
+    <view class="logout-btn" bind:tap="logout" wx:if="{{isLogin == 1}}">退出登录</view>
 </view>
 
 

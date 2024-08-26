@@ -25,8 +25,14 @@
             <view class="arrow-icon"></view>
         </view>
 
-        <button class="start-button" bind:tap="startDiagnosis">开始诊断</button>
-        <navigator url="/pages/loading/index" style="width: 100%; text-align: center; margin-top: 30rpx; font-size: 24rpx; color: #999;">查询最近诊断记录</navigator>
+        <button class="start-button" bind:tap="readAlreadyDiagnosis" wx:if="{{isWebCheck}}">查看已有诊断</button>
+        <button class="start-button" bind:tap="startDiagnosis" wx:else>开始诊断</button>
+        <view bind:tap="goToList" style="width: 100%; text-align: center; margin-top: 30rpx; font-size: 24rpx; color: #999;">查询诊断记录</view>
     </view>
-    
+
+</view>
+
+<view class="login-bar" wx:if="{{isLogin == 0}}">
+    <text>您还没有登录哦!</text>
+    <navigator url="/pages/login/index" open-type="navigate">去登录</navigator>
 </view>

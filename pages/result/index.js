@@ -6,12 +6,9 @@ Page({
         counts: [0,0,0],
         models: {}
     },
-    onLoad: function () {
-        // 页面加载时的逻辑
-    },
-    onShow: function() {
+    onLoad: function (option) {
         app.request({
-            url: '/miniapp/web_check_result',
+            url: '/miniapp/web_check_result?id=' + option.id,
             isLogin: true,
             isLoading: true,
             success: (res) => {
@@ -27,6 +24,8 @@ Page({
                 }
             }
         })
+    },
+    onShow: function() {
     },
     add: function () {
         wx.navigateTo({

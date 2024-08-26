@@ -8,22 +8,29 @@ Page({
         phoneNumber: ''
     },
     onShow() {
-        console.log(wx.getStorageSync('role'));
-        this.setData({
-            role: wx.getStorageSync('role')
-        })
-        app.request({
-            url: '/miniapp/auth/info',
-            isLogin: true,
-            isLoading: true,
-            success: (res) => {
-                console.log(res.data.data);
-                this.setData({
-                    user: res.data.data.user,
-                    statistics: res.data.data.statistics
+        const isLogin = wx.getStorageSync('isLogin') || 0
+        if (isLogin) {
+            app.checkSession().then((options) => {
+                console.log(options.role);
+                app.request({
+                    url: '/miniapp/auth/info',
+                    isLoading: true,
+                    success: (res) => {
+                        console.log(res.data);
+                        this.setData({
+                            isLogin: isLogin,
+                            role: options.role,
+                            user: res.data.data.user,
+                            statistics: res.data.data.statistics
+                        })
+                    }
                 })
-            }
-        })
+            })
+        } else {
+            this.setData({
+                isLogin: isLogin
+            })
+        }
     },
 
     // 退出登录
@@ -37,8 +44,15 @@ Page({
                 if (res.confirm) {
                     wx.removeStorageSync('username')
                     wx.removeStorageSync('role')
+                    wx.removeStorageSync('isLogin')
+
+                    // 初始化参数
+                    this.setData({
+                        role: 'am'
+                    })
+
                     wx.switchTab({
-                        url: '/pages/one/index',
+                        url: '/pages/index/index',
                     })
                 } else if (res.cancel) {
                     console.log('用户点击取消')
@@ -56,22 +70,37 @@ Page({
 
     // 我的报告
     repot() {
-        wx.navigateTo({
-            url: '/pages/report/index',
+        app.checkSession().then(() => {
+            wx.navigateTo({
+                url: '/pages/report/index',
+            })
+        })
+    },
+
+    // 网站诊断
+    chack() {
+        app.checkSession().then(() => {
+            wx.navigateTo({
+                url: '/pages/list/index',
+            })
         })
     },
 
     // 推广列表
     spread() {
-        wx.navigateTo({
-            url: '/pages/spread/index',
+        app.checkSession().then(() => {
+            wx.navigateTo({
+                url: '/pages/spread/index',
+            })
         })
     },
 
     // 我的需求
     need() {
-        wx.navigateTo({
-            url: '/pages/need/index',
+        app.checkSession().then(() => {
+            wx.navigateTo({
+                url: '/pages/need/index',
+            })
         })
     },
 

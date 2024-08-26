@@ -186,6 +186,7 @@
 .popup-content {
     position: relative;
     background-color: #fff;
+    width: 80%;
     padding: 30rpx;
     border-radius: 10rpx;
     box-sizing: border-box;
@@ -197,11 +198,15 @@
 .popup-title {
     font-size: 26rpx;
     text-align: center;
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
 }
 
 input {
-    border: 1rpx solid #ccc;
+    border: 2rpx solid #ccc;
     padding: 0 20rpx;
+    width: 100%;
     height: 80rpx !important;
     line-height: 80rpx !important;
     box-sizing: border-box;

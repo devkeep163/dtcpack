@@ -140,6 +140,7 @@ page {
 .popup-content {
     position: relative;
     background-color: #fff;
+    width: 80%;
     padding: 30rpx;
     border-radius: 10rpx;
     box-sizing: border-box;
@@ -166,18 +167,20 @@ page {
 
 input {
     flex: 1;
-    border: 1rpx solid #ccc;
+    border: 2rpx solid #ccc;
     padding: 0 20rpx;
-    /* width: 100%; */
-    height: 60rpx !important;
-    line-height: 60rpx !important;
+    width: 100%;
+    height: 80rpx !important;
+    line-height: 80rpx !important;
     box-sizing: border-box;
     border-radius: 10rpx;
 }
 
 .button-group {
     display: flex;
+    gap: 20rpx;
     justify-content: space-between;
+    padding: 30rpx 0;
 }
 
 .cancel-btn,

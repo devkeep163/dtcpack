@@ -1,84 +1,86 @@
 <view class="container">
 
-    <view class="menu-list">
-        <view class="menu-item">
-            <text class="menu-label">公司：</text>
-            <view class="menu-item-right" bindtap="openPopup" data-title="公司名称" data-name="company">
-                <text>{{ company }}</text>
-                <view class="arrow-icon"></view>
-            </view>
-        </view>
-        <view class="menu-item">
-            <text class="menu-label">部门：</text>
-            <view class="menu-item-right" bind:tap="openPopup" data-title="部门名称" data-name="department">
-                <text>{{ department }}</text>
-                <view class="arrow-icon"></view>
-            </view>
-        </view>
-        <view class="menu-item">
-            <text class="menu-label">姓：</text>
-            <view class="menu-item-right" bind:tap="openPopup" data-title="姓氏" data-name="last_name">
-                <text>{{ last_name }}</text>
-                <view class="arrow-icon"></view>
-            </view>
-        </view>
-        <view class="menu-item">
-            <text class="menu-label">名：</text>
-            <view class="menu-item-right" bind:tap="openPopup" data-title="您的名字" data-name="first_name">
-                <text>{{ first_name }}</text>
-                <view class="arrow-icon"></view>
-            </view>
-        </view>
-        <view class="menu-item">
-            <text class="menu-label">公司地址：</text>
-            <view class="menu-item-right" bind:tap="openPopup" data-title="公司地址" data-name="address">
-                <text>{{ address }}</text>
-                <view class="arrow-icon"></view>
-            </view>
-        </view>
-        <view class="menu-item">
-            <text class="menu-label">城市：</text>
-            <view class="menu-item-right" bind:tap="openPopup" data-title="所在城市" data-name="city">
-                <text>{{ city }}</text>
-                <view class="arrow-icon"></view>
-            </view>
-        </view>
-        <view class="menu-item">
-            <text class="menu-label">邮政编码：</text>
-            <view class="menu-item-right" bind:tap="openPopup" data-title="邮政编码" data-name="code">
-                <text>{{ code }}</text>
-                <view class="arrow-icon"></view>
-            </view>
-        </view>
-        <view class="menu-item">
-            <text class="menu-label">国家：</text>
-            <view class="menu-item-right" bind:tap="openPopup" data-title="所在国家" data-name="country">
-                <text>{{ country }}</text>
-                <view class="arrow-icon"></view>
-            </view>
-        </view>
+  <view class="menu-list">
+    <view class="menu-item" bindtap="openPopup" data-title="公司名称" data-name="company">
+      <text class="menu-label">公司：</text>
+      <view class="menu-item-right">
+        <text>{{ company }}</text>
+        <view class="arrow-icon"></view>
+      </view>
     </view>
+    <view class="menu-item" bind:tap="openPopup" data-title="部门名称" data-name="department">
+      <text class="menu-label">部门：</text>
+      <view class="menu-item-right">
+        <text>{{ department }}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+    <view class="menu-item" bind:tap="openPopup" data-title="姓氏" data-name="last_name">
+      <text class="menu-label">姓：</text>
+      <view class="menu-item-right">
+        <text>{{ last_name }}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+    <view class="menu-item" bind:tap="openPopup" data-title="您的名字" data-name="first_name">
+      <text class="menu-label">名：</text>
+      <view class="menu-item-right">
+        <text>{{ first_name }}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+    <view class="menu-item" bind:tap="openPopup" data-title="公司地址" data-name="address">
+      <text class="menu-label">公司地址：</text>
+      <view class="menu-item-right">
+        <text>{{ address }}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+    <view class="menu-item" bind:tap="openPopup" data-title="所在城市" data-name="city">
+      <text class="menu-label">城市：</text>
+      <view class="menu-item-right">
+        <text>{{ city }}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+    <view class="menu-item" bind:tap="openPopup" data-title="邮政编码" data-name="code">
+      <text class="menu-label">邮政编码：</text>
+      <view class="menu-item-right">
+        <text>{{ code }}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+    <view class="menu-item" bind:tap="openPopup" data-title="所在国家" data-name="country">
+      <text class="menu-label">国家：</text>
+      <view class="menu-item-right">
+        <text>{{ country }}</text>
+        <view class="arrow-icon"></view>
+      </view>
+    </view>
+  </view>
 
-    <view class="logout-btn" bind:tap="save">保存</view>
-    <view style="height: 40vh;"></view>
+  <view class="logout-btn" bind:tap="save">保存</view>
+  <view style="height: 40vh;"></view>
 </view>
 
 
 <view class="popup-container" wx:if="{{showPopup}}">
-    <view class="popup-mask" bindtap="closePopup"></view>
-    <view class="popup-content">
-        <view class="popup-title">{{ title }}</view>
-        <input type="text" placeholder="公司名称" model:value="{{itemValue}}" wx:if="{{itemName == 'company'}}" />
-        <input type="text" placeholder="部门名称" model:value="{{itemValue}}" wx:if="{{itemName == 'department'}}" />
-        <input type="text" placeholder="你的姓氏" model:value="{{itemValue}}" wx:if="{{itemName == 'last_name'}}" />
-        <input type="text" placeholder="您的名字" model:value="{{itemValue}}" wx:if="{{itemName == 'first_name'}}" />
-        <input type="text" placeholder="公司地址" model:value="{{itemValue}}" wx:if="{{itemName == 'address'}}" />
-        <input type="text" placeholder="城市" model:value="{{itemValue}}" wx:if="{{itemName == 'city'}}" />
-        <input type="text" placeholder="邮政编码" model:value="{{itemValue}}" wx:if="{{itemName == 'code'}}" />
-        <input type="text" placeholder="国家" model:value="{{itemValue}}" wx:if="{{itemName == 'country'}}" />
-        <view class="button-group">
-            <button class="cancel-btn" bindtap="closePopup">取消</button>
-            <button class="save-btn" bindtap="confirm">确定</button>
-        </view>
+  <view class="popup-mask" bindtap="closePopup"></view>
+  <view class="popup-content">
+    <view class="popup-title">{{ title }}</view>
+    <view class="popup-input">
+      <input type="text" placeholder="公司名称" model:value="{{itemValue}}" wx:if="{{itemName == 'company'}}" />
+      <input type="text" placeholder="部门名称" model:value="{{itemValue}}" wx:if="{{itemName == 'department'}}" />
+      <input type="text" placeholder="你的姓氏" model:value="{{itemValue}}" wx:if="{{itemName == 'last_name'}}" />
+      <input type="text" placeholder="您的名字" model:value="{{itemValue}}" wx:if="{{itemName == 'first_name'}}" />
+      <input type="text" placeholder="公司地址" model:value="{{itemValue}}" wx:if="{{itemName == 'address'}}" />
+      <input type="text" placeholder="城市" model:value="{{itemValue}}" wx:if="{{itemName == 'city'}}" />
+      <input type="text" placeholder="邮政编码" model:value="{{itemValue}}" wx:if="{{itemName == 'code'}}" />
+      <input type="text" placeholder="国家" model:value="{{itemValue}}" wx:if="{{itemName == 'country'}}" />
     </view>
+    <view class="button-group">
+      <button class="cancel-btn" bindtap="closePopup">取消</button>
+      <button class="save-btn" bindtap="confirm">确定</button>
+    </view>
+  </view>
 </view>

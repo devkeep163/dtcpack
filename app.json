@@ -7,9 +7,11 @@
         "pages/info/index",
         "pages/result/index",
         "pages/result_item/index",
-        "pages/result_item_detail/index",
-        "pages/am/index",
+        "pages/result_share/index",
+        "pages/result_analysis/index",
+        "pages/analysis/index",
         "pages/report/index",
+        "pages/browse/index",
         "pages/create/index",
         "pages/need/index",
         "pages/agreement/index",
@@ -23,14 +25,14 @@
         "list": [{
                 "pagePath": "pages/index/index",
                 "text": "网站诊断",
-                "iconPath": "static/icons/home.png",
-                "selectedIconPath": "static/icons/home_active.png"
+                "iconPath": "static/icons/dia2.png",
+                "selectedIconPath": "static/icons/dia1.png"
             },
             {
                 "pagePath": "pages/home/index",
                 "text": "个人中心",
-                "iconPath": "static/icons/profile.png",
-                "selectedIconPath": "static/icons/profile_active.png"
+                "iconPath": "static/icons/user2.png",
+                "selectedIconPath": "static/icons/user1.png"
             }
         ]
     },

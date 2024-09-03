@@ -44,7 +44,7 @@ Page({
     startDiagnosis: function () {
         console.log(this.data.url);
         app.request({
-            url: '/miniapp/web_check',
+            url: '/miniapp/web_check/create',
             isLogin: true,
             isLoading: true,
             data: {

@@ -177,30 +177,38 @@
 
 .issues-header {
     text-align: center;
-    height: 60rpx;
-    line-height: 60rpx;
+    height: 70rpx;
+    position: relative;
+}
+
+.issues-header image {
+    width: 80%;
+    height: 100%;
 }
 
 .issues-title {
     font-size: 26rpx;
-    font-weight: bold;
-    padding: 10px 20px;
-    background-color: #EDE7F6;
-    color: #333;
-    text-align: center;
-    border-radius: 20px;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.issue-top {
+    display: flex;
+    align-items: center;
 }
 
 .issue-item {
     display: flex;
     flex-direction: column;
-    padding: 40rpx 0;
+    padding: 30rpx 0;
     box-sizing: border-box;
+    border-bottom: 1rpx #f1f1f1 solid;
 }
 
-.issue-item:not(:last-child) {
-    border-bottom: 1px #f1f1f1 solid;
+.icon-small {
+    margin-right: 10rpx;
 }
 
 .issue-icon {

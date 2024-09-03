@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="item">
+        <image class="picker-icon" src="/static/icons/two.png" />
+        <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}" class="arrow-picker">
+            <view class="picker-text">{{countries[countryIndex]}}</view>
+        </picker>
+        <view class="arrow-icon"></view>
+    </view>
+
+    <view class="item">
+        <image class="input-icon" src="/static/icons/one.png" />
+        <input model:value="{{my_url}}" placeholder="要分析的网址 (必填)" placeholder-class="input-placeholder" />
+    </view>
+
+    <view class="item">
+        <image class="input-icon" src="/static/icons/one.png" />
+        <input model:value="{{other_url}}" placeholder="竞品网址 (如未输入则采用市场标准示例)" placeholder-class="input-placeholder" />
+    </view>
+
+    <view class="footer" bind:tap="create">添加</view>
+</view>

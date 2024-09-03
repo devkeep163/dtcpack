@@ -4,15 +4,16 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 20rpx;
+    gap: 25rpx;
+    overflow: auto;
 
     background-color: #815df2;
-    background: linear-gradient(180deg,
+    /* background: linear-gradient(180deg,
             #815df2 0%,
             #815df2 25%,
             #ccc 50%,
             #dedede 75%,
-            #f4f5fc 100%);
+            #f2f2f2 100%); */
 }
 
 .user-info {
@@ -99,7 +100,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40rpx 20rpx;
+    padding: 50rpx 20rpx;
     position: relative;
 }
 
@@ -114,7 +115,7 @@
 }
 
 .menu-item:last-child {
-    border-bottom: none;
+    border-bottom: none !important;
 }
 
 .menu-item-left {

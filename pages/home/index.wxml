@@ -1,9 +1,8 @@
 <view class="container">
     <view class="user-info" wx:if="{{isLogin == 0}}">
-        <navigator url="/pages/login/index" open-type="navigate">立即登录</navigator>
+        <navigator url="/pages/login/index" open-type="navigate" style="width: 100%;">立即登录</navigator>
         <view class="user-arrow-icon"></view>
     </view>
-
     <view class="user-info" bind:tap="info" wx:if="{{isLogin == 1}}">
         <view class="user-base">
             <image class="avatar" src="{{user.avatar}}" />
@@ -15,33 +14,33 @@
     <view class="stats-grid" wx:if="{{role == 'admin'}}">
         <view class="stat-item">
             <image src="/static/icons/account_surplus.png" class="stats-icon"></image>
-            <text class="stat-label">剩余排名监测任务数</text>
-            <text class="stat-value">{{statistics.remainingRankingTasks}}</text>
+            <text class="stat-label">排名监测数</text>
+            <text class="stat-value">{{statistics.rank_tracking || 0}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_keyword.png" class="stats-icon"></image>
-            <text class="stat-label">排名监测单任务数量最大词数</text>
-            <text class="stat-value">{{statistics.maxWordCountPerTask}}</text>
+            <text class="stat-label">网页监测数</text>
+            <text class="stat-value">{{statistics.web_tracking || 0}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_surplus_number.png" class="stats-icon"></image>
-            <text class="stat-label">剩余排名监测次数</text>
-            <text class="stat-value">{{statistics.remainingRankingTimes}}</text>
+            <text class="stat-label">竞品监测数</text>
+            <text class="stat-value">{{statistics.competitor_monitor_limit || 0}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_monitor.png" class="stats-icon"></image>
-            <text class="stat-label">剩余竞品监控任务数</text>
-            <text class="stat-value">{{statistics.remainingCompetitorTasks}}</text>
+            <text class="stat-label">网站分析</text>
+            <text class="stat-value">{{statistics.web_analysis_limit || 0}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_web_monitor.png" class="stats-icon"></image>
-            <text class="stat-label">剩余网页监控任务数</text>
-            <text class="stat-value">{{statistics.remainingWebTasks}}</text>
+            <text class="stat-label">网站诊断</text>
+            <text class="stat-value">{{statistics.web_check_limit || 0}}</text>
         </view>
         <view class="stat-item">
             <image src="/static/icons/account_diagnosis.png" class="stats-icon"></image>
-            <text class="stat-label">网店诊断(7天/次)</text>
-            <text class="stat-value">7</text>
+            <text class="stat-label">更新频率</text>
+            <text class="stat-value">{{statistics.update_frequency || 7}}天/次</text>
         </view>
     </view>
 
@@ -53,17 +52,24 @@
             </view>
             <view class="arrow-icon"></view>
         </view>
-        <view class="menu-item" bind:tap="chack">
+        <!-- <view class="menu-item" bind:tap="chack">
             <view class="menu-item-left">
                 <image src="/static/icons/account_report.png" class="menu-icon"></image>
                 <text class="menu-label">网站诊断</text>
             </view>
             <view class="arrow-icon"></view>
-        </view>
+        </view> -->
         <view class="menu-item" bind:tap="need">
             <view class="menu-item-left">
                 <image src="/static/icons/account_need.png" class="menu-icon"></image>
                 <text class="menu-label">我的需求</text>
+            </view>
+            <view class="arrow-icon"></view>
+        </view>
+        <view class="menu-item" bind:tap="browse">
+            <view class="menu-item-left">
+                <image src="/static/icons/account_report.png" class="menu-icon"></image>
+                <text class="menu-label">浏览记录</text>
             </view>
             <view class="arrow-icon"></view>
         </view>
@@ -98,6 +104,8 @@
     </view>
 
     <view class="logout-btn" bind:tap="logout" wx:if="{{isLogin == 1}}">退出登录</view>
+
+    <view style="opacity: 0; height: 20rpx;">.</view>
 </view>
 
 

@@ -24,6 +24,7 @@ Page({
                 password: this.data.password
             },
             success: (res) => {
+                console.log(res);
                 if (res.data.code == 0) {
                     wx.setStorageSync('username', res.data.data.email)
                     wx.setStorageSync('role', res.data.data.role)
@@ -31,11 +32,13 @@ Page({
                     wx.switchTab({
                         url: '/pages/index/index'
                     })
+                } else {
+                    wx.showToast({
+                        duration: 2500,
+                        icon: 'none',
+                        title: res.data.msg
+                    })
                 }
-                wx.showToast({
-                    icon: 'none',
-                    title: res.data.msg
-                })
             },
             complete() {
                 wx.hideLoading()
@@ -43,15 +46,21 @@ Page({
             fail(err) {
                 console.log(err);
                 wx.showToast({
+                    icon: 'error',
                     title: '请求异常',
                 })
             }
         })
     },
 
+    // 小程序登录
     getPhoneNumberAndUserInfo(e) {
         if (e.detail.code) {
-            app.getPhone(e.detail.code)
+            app.getPhone(e.detail.code).then(() => {
+                wx.switchTab({
+                    url: '/pages/index/index'
+                })
+            })
         }
     }
 });

@@ -1,6 +1,6 @@
 <view class="container">
     <view class="nav-container">
-        <view class="nav-card {{currentIndex === index ? 'nav-active' : ''}}" wx:for="{{navs}}" wx:key="index" bindtap="handleTap" data-index="{{index}}">
+        <view class="nav-card {{currentIndex === index ? 'nav-active' : ''}}" wx:for="{{navs}}" wx:if="{{ !(index == 2 && !isWebAnalysis) }}" wx:key="index" bindtap="handleTap" data-index="{{index}}">
             <view class="icon-container">
                 <image src="{{ navIcons[index] }}" mode="aspectFit" class="icon" wx:if="{{ currentIndex == index }}"></image>
                 <image src="{{ navUnIcons[index] }}" mode="aspectFit" class="icon" wx:else></image>
@@ -10,42 +10,52 @@
     </view>
 
     <view class="item" wx:for="{{list}}" wx:key="index">
-        <view class="main-info">
-            <view class="url-container">
-                <text class="label">网址：</text>
-                <text class="url">{{item.url}}</text>
+        <view class="item-container" bind:tap="goToResult" data-id="{{item.id}}" data-status="{{item.status}}" data-index="{{index}}">
+            <view class="main-info">
+                <view class="url-container">
+                    <text class="label">网址：</text>
+                    <text class="url">{{item.url || item.my_url}}</text>
+                </view>
+                <view wx:if="{{ item.score }}">
+                    <view class="score-container good" wx:if="{{ item.score > 60 }}">
+                        <image src="/static/icons/good.png" mode="aspectFit"></image>
+                        <text class="score">{{item.score}}分</text>
+                    </view>
+                    <view class="score-container fair" wx:elif="{{ item.score > 50 }}">
+                        <image src="/static/icons/fair.png" mode="aspectFit"></image>
+                        <text class="score">{{item.score}}分</text>
+                    </view>
+                    <view class="score-container poor" wx:else>
+                        <image src="/static/icons/poor.png" mode="aspectFit"></image>
+                        <text class="score">{{item.score}}分</text>
+                    </view>
+                </view>
+                <view class="status-container" wx:else>
+                    <text wx:if="{{ item.status == 1 }}">已完成</text>
+                    <text wx:elif="{{ item.status == 2 }}">诊断失败</text>
+                    <text wx:else>进行中</text>
+                </view>
             </view>
-            <view class="score-container good" wx:if="{{ item.score > 60 }}">
-                <image src="/static/icons/good.png" mode="aspectFit"></image>
-                <text class="score">{{item.score}}分</text>
+            <view class="sub-info">
+                <view class="country-language">
+                    <text>国家：{{item.country}}</text>
+                    <text wx:if="{{item.language}}">语言：{{item.language}}</text>
+                </view>
             </view>
-            <view class="score-container fair" wx:elif="{{ item.score > 50 }}">
-                <image src="/static/icons/fair.png" mode="aspectFit"></image>
-                <text class="score">{{item.score}}分</text>
-            </view>
-            <view class="score-container poor" wx:else>
-                <image src="/static/icons/poor.png" mode="aspectFit"></image>
-                <text class="score">{{item.score}}分</text>
+            <view class="footer-info">
+                <view class="create-date">
+                    <text>创建时间:{{item.date}}</text>
+                </view>
             </view>
         </view>
-        <view class="sub-info">
-            <view class="country-language">
-                <text>国家：{{item.country}}</text>
-                <text>语言：{{item.language}}</text>
-            </view>
-        </view>
-        <view class="footer-info">
-            <view class="create-date">
-                <text>创建时间:{{item.date}}</text>
-            </view>
-            <view class="share-icon" bind:tap="showShareModal">
-                <image src="/static/icons/share.png" mode="aspectFit"></image>
-            </view>
-        </view>
+        <!-- <view class="share-icon" bind:tap="showShareModal" data-index="{{index}}">
+            <image src="/static/icons/share.png" mode="aspectFit"></image>
+        </view> -->
     </view>
 </view>
+<view style="width: 100%; height: 100rpx; opacity: 0;">.</view>
 
-<view class="bottom-container" bind:tap="create">+ 新建诊断</view>
+<view class="bottom-container" bind:tap="create">{{buttonTitle}}</view>
 
 <view class="modal {{isModalVisible ? 'show' : ''}}">
     <view class="modal-mask" bindtap="hideModal"></view>
@@ -55,15 +65,15 @@
         </view>
         <view class="modal-body">
             <button class="share-option" open-type="share">
-                <image src="/static/icons/share-footer-1.png" mode="aspectFit"></image>
+                <image src="/static/icons/wx-l.png" mode="aspectFit"></image>
                 <text>微信好友</text>
             </button>
             <button class="share-option" open-type="share">
-                <image src="/static/icons/share-footer-2.png" mode="aspectFit"></image>
+                <image src="/static/icons/wx-f.png" mode="aspectFit"></image>
                 <text>朋友圈</text>
             </button>
             <button class="share-option" bindtap="copyLink">
-                <image src="/static/icons/share-footer-3.png" mode="aspectFit"></image>
+                <image src="/static/icons/cy.png" mode="aspectFit"></image>
                 <text>复制链接</text>
             </button>
         </view>

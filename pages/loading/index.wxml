@@ -5,7 +5,7 @@
     </view>
     <view class="text-container">
         <text class="title">{{title}}</text>
-        <text class="description">点击右上角 , 选择收藏 或添加到我的小程序 , 可以快速查看诊断结果</text>
+        <text class="description">点击右上角 , 选择收藏 或添加到我的小程序 , 可以快速查看诊断或分析结果</text>
     </view>
 
     <view class="text-container"></view>

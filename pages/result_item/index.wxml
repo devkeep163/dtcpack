@@ -1,10 +1,10 @@
-<view class="nav-container">
+<scroll-view class="nav-container" scroll-x="true" style="white-space: nowrap;" scroll-left="{{scrollLeft}}" animation="true" duration="300">
     <view class="nav-card {{currentIndex == index ? 'nav-active' : ''}}" wx:for="{{navs}}" wx:key="index" bindtap="scrollToView" data-index="{{index}}" data-target="section{{index}}">
         <text>{{item}}</text>
     </view>
-</view>
+</scroll-view>
 
-<scroll-view class="container" scroll-y="true" scroll-into-view="{{toView}}">
+<scroll-view class="container" scroll-y="true" scroll-into-view="{{toView}}" bindscroll="onScroll" scroll-with-animation="true">
     <!-- SEO规则诊断 -->
     <view class="header-container" id="section0">
         <view class="header-item">

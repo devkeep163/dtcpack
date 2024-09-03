@@ -21,7 +21,6 @@ Page({
             }
         })
     },
-
     // 打开弹窗
     openPopup: function () {
         const index = e.currentTarget.dataset.index;

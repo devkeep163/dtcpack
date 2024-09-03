@@ -32,12 +32,14 @@ Page({
         })
     },
     onShow() {
+        this.refreshData()
+    },
+    refreshData() {
         const isLogin = wx.getStorageSync('isLogin') || 0
         console.log(isLogin);
         if (isLogin) {
             app.request({
-                url: '/miniapp/web_check_recent',
-                isLoading: true,
+                url: '/miniapp/web_check/recent',
                 success: (res) => {
                     if (res.data.code == 0) {
                         const exists = res.data.data.exists
@@ -69,11 +71,24 @@ Page({
         })
     },
 
+    // 登录
+    goToLogin(e) {
+        if (e.detail.code) {
+            app.getPhone(e.detail.code).then(() => {
+                this.refreshData()
+                wx.showToast({
+                    icon: 'none',
+                    title: '登录成功',
+                })
+            })
+        }
+    },
+
     // 开始诊断
     startDiagnosis() {
         app.checkSession().then(() => {
             app.request({
-                url: '/miniapp/web_check',
+                url: '/miniapp/web_check/create',
                 isLoading: true,
                 data: {
                     my_url: this.data.url,
@@ -100,15 +115,13 @@ Page({
     readAlreadyDiagnosis() {
         console.log(this.data.WebCheckStatus);
         app.checkSession().then(() => {
-            if(this.data.WebCheckStatus == 0)
-            {
+            if (this.data.WebCheckStatus == 0) {
                 wx.navigateTo({
                     url: '/pages/loading/index?id=' + this.data.webCheckId
                 })
             }
 
-            if(this.data.WebCheckStatus == 1)
-            {
+            if (this.data.WebCheckStatus == 1) {
                 wx.navigateTo({
                     url: '/pages/result/index?id=' + this.data.webCheckId
                 })

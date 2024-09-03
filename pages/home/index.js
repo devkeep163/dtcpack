@@ -2,7 +2,7 @@
 const app = getApp()
 Page({
     data: {
-        role: 'am',
+        role: 'custom',
         user: {},
         showPopup: false,
         phoneNumber: ''
@@ -48,7 +48,8 @@ Page({
 
                     // 初始化参数
                     this.setData({
-                        role: 'am'
+                        role: 'custom',
+                        user: {}
                     })
 
                     wx.switchTab({
@@ -73,6 +74,15 @@ Page({
         app.checkSession().then(() => {
             wx.navigateTo({
                 url: '/pages/report/index',
+            })
+        })
+    },
+
+    // 浏览记录
+    browse() {
+        app.checkSession().then(() => {
+            wx.navigateTo({
+                url: '/pages/browse/index',
             })
         })
     },

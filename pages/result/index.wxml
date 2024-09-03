@@ -48,30 +48,107 @@
 
     <view class="issues-container">
         <view class="issues-header">
+            <image src="/static/icons/xy.png"></image>
             <text class="issues-title">需要解决的问题</text>
         </view>
-        <view wx:for="{{result.json.list}}" wx:key="index">
-            <view class="issue-item" wx:if="{{item.error_code}}">
-                <view class="issue-header">
-                    <image src="/static/icons/warning.png" class="issue-icon" />
-                    <text class="issue-text">{{item.name}}</text>
+
+        <view wx:for="{{errors.status3}}" wx:key="index" class="list-container">
+            <view class="issue-item">
+                <view class="issue-top">
+                    <icon class="icon-small" type="warn"></icon>
+                    <text class="issue-text">{{item.category}}</text>
                 </view>
                 <view class="issue-content">
-                    <text class="issue-desc">{{item.extra[item.error_code]}}</text>
+                    <text class="issue-desc">{{item[1]}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view wx:for="{{errors.status2}}" wx:key="index" class="list-container">
+            <view class="issue-item">
+                <view class="issue-top">
+                    <icon class="icon-small" type="warn" color="#FFA500"></icon>
+                    <text class="issue-text">{{item.category}}</text>
+                </view>
+                <view class="issue-content">
+                    <text class="issue-desc">{{item[1]}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view style="display: none;">
+            <view wx:for="{{models.model_1_data}}" wx:key="index" class="list-container" wx:if="{{item.result[0][0] != 1}}">
+                <view class="issue-item">
+                    <view class="issue-top">
+                        <!-- <image src="/static/icons/warning.png" class="issue-icon" /> -->
+                        <icon class="icon-small" type="warn" size="23"></icon>
+                        <text class="issue-text">{{item.title}}</text>
+                    </view>
+                    <view class="issue-content">
+                        <text class="issue-desc">{{item.result[0][1]}}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:for="{{models.model_2_data}}" wx:key="index" class="list-container" wx:if="{{item.result[0][0] != 1}}">
+                <view class="issue-item">
+                    <view class="issue-top">
+                        <!-- <image src="/static/icons/warning.png" class="issue-icon" /> -->
+                        <icon class="icon-small" type="warn" size="23"></icon>
+                        <text class="issue-text">{{item.title}}</text>
+                    </view>
+                    <view class="issue-content">
+                        <text class="issue-desc">{{item.result[0][1]}}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:for="{{models.model_3_data}}" wx:key="index" class="list-container" wx:if="{{item.result[0][0] != 1}}">
+                <view class="issue-item">
+                    <view class="issue-top">
+                        <!-- <image src="/static/icons/warning.png" class="issue-icon" /> -->
+                        <icon class="icon-small" type="warn" size="23"></icon>
+                        <text class="issue-text">{{item.title}}</text>
+                    </view>
+                    <view class="issue-content">
+                        <text class="issue-desc">{{item.result[0][1]}}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:for="{{models.model_4_data}}" wx:key="index" class="list-container" wx:if="{{item.result[0][0] != 1}}">
+                <view class="issue-item">
+                    <view class="issue-top">
+                        <!-- <image src="/static/icons/warning.png" class="issue-icon" /> -->
+                        <icon class="icon-small" type="warn" size="23"></icon>
+                        <text class="issue-text">{{item.title}}</text>
+                    </view>
+                    <view class="issue-content">
+                        <text class="issue-desc">{{item.result[0][1]}}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:for="{{models.model_5_data}}" wx:key="index" class="list-container" wx:if="{{item.result[0][0] != 1}}">
+                <view class="issue-item">
+                    <view class="issue-top">
+                        <!-- <image src="/static/icons/warning.png" class="issue-icon" /> -->
+                        <icon class="icon-small" type="warn" size="23"></icon>
+                        <text class="issue-text">{{item.title}}</text>
+                    </view>
+                    <view class="issue-content">
+                        <text class="issue-desc">{{item.result[0][1]}}</text>
+                    </view>
                 </view>
             </view>
         </view>
     </view>
 
     <!-- 诊断列表 -->
-    <view class="seo-analysis">
-        <view class="seo-header" bind:tap="seoRule" data-index="0">
+    <view class="seo-analysis" bind:tap="seoRule" data-index="0">
+        <view class="seo-header">
             <view class="seo-header-left">
-                <image src="/static/icons/seo.png" class="issue-icon" />
-                <text class="seo-title">SEO项目诊断</text>
+                <image src="/static/icons/icon1.png" class="issue-icon" />
+                <text class="seo-title">SEO规则诊断</text>
             </view>
             <view class="seo-header-right">
-                <text class="seo-score">{{models.model_1[0] + models.model_1[1] + models.model_1[2]}}分</text>
+                <text class="seo-score">{{model_score[0]}}分</text>
                 <image src="/static/icons/j.png" class="issue-icon" />
             </view>
         </view>
@@ -93,14 +170,14 @@
             </view>
         </view>
     </view>
-    <view class="seo-analysis">
-        <view class="seo-header" bind:tap="seoRule" data-index="1">
+    <view class="seo-analysis" bind:tap="seoRule" data-index="1">
+        <view class="seo-header">
             <view class="seo-header-left">
-                <image src="/static/icons/seo.png" class="issue-icon" />
+                <image src="/static/icons/icon2.png" class="issue-icon" />
                 <text class="seo-title">引擎规范诊断</text>
             </view>
             <view class="seo-header-right">
-                <text class="seo-score">{{models.model_2[0] + models.model_2[1] + models.model_2[2]}}分</text>
+                <text class="seo-score">{{model_score[1]}}分</text>
                 <image src="/static/icons/j.png" class="issue-icon" />
             </view>
         </view>
@@ -122,14 +199,14 @@
             </view>
         </view>
     </view>
-    <view class="seo-analysis">
-        <view class="seo-header" bind:tap="seoRule" data-index="2">
+    <view class="seo-analysis" bind:tap="seoRule" data-index="2">
+        <view class="seo-header">
             <view class="seo-header-left">
-                <image src="/static/icons/seo.png" class="issue-icon" />
+                <image src="/static/icons/icon3.png" class="issue-icon" />
                 <text class="seo-title">SEO元素诊断</text>
             </view>
             <view class="seo-header-right">
-                <text class="seo-score">{{models.model_3[0] + models.model_3[1] + models.model_3[2]}}分</text>
+                <text class="seo-score">{{model_score[2]}}分</text>
                 <image src="/static/icons/j.png" class="issue-icon" />
             </view>
         </view>
@@ -151,14 +228,14 @@
             </view>
         </view>
     </view>
-    <view class="seo-analysis">
-        <view class="seo-header" bind:tap="seoRule" data-index="3">
+    <view class="seo-analysis" bind:tap="seoRule" data-index="3">
+        <view class="seo-header">
             <view class="seo-header-left">
-                <image src="/static/icons/seo.png" class="issue-icon" />
+                <image src="/static/icons/icon4.png" class="issue-icon" />
                 <text class="seo-title">内容诊断</text>
             </view>
             <view class="seo-header-right">
-                <text class="seo-score">{{models.model_4[0] + models.model_4[1] + models.model_4[2]}}分</text>
+                <text class="seo-score">{{model_score[3]}}分</text>
                 <image src="/static/icons/j.png" class="issue-icon" />
             </view>
         </view>
@@ -180,14 +257,14 @@
             </view>
         </view>
     </view>
-    <view class="seo-analysis">
-        <view class="seo-header" bind:tap="seoRule" data-index="4">
+    <view class="seo-analysis" bind:tap="seoRule" data-index="4">
+        <view class="seo-header">
             <view class="seo-header-left">
-                <image src="/static/icons/seo.png" class="issue-icon" />
+                <image src="/static/icons/icon5.png" class="issue-icon" />
                 <text class="seo-title">社媒诊断</text>
             </view>
             <view class="seo-header-right">
-                <text class="seo-score">{{models.model_5[0] + models.model_5[1] + models.model_5[2]}}分</text>
+                <text class="seo-score">{{model_score[4]}}分</text>
                 <image src="/static/icons/j.png" class="issue-icon" />
             </view>
         </view>
@@ -211,4 +288,4 @@
     </view>
 </view>
 
-<view class="add-button" bindtap="add"></view>
+<!-- <view class="add-button" bindtap="add"></view> -->

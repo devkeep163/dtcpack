@@ -37,7 +37,8 @@ Page({
                 else
                 {
                     wx.showToast({
-                        icon: 'none',
+                        duration: 2000,
+                        icon: 'error',
                         title: res.data.msg
                     })
                 }
@@ -52,7 +53,11 @@ Page({
     },
     getPhoneNumberAndUserInfo(e) {
         if (e.detail.code) {
-            app.getPhone(e.detail.code)
+            app.getPhone(e.detail.code).then(() => {
+                wx.switchTab({
+                    url: '/pages/index/index'
+                })
+            })
         }
     }
 });

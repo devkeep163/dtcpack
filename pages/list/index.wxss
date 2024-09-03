@@ -26,9 +26,16 @@ page {
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 30rpx 20rpx;
+    padding: 0 20rpx;
     justify-content: center;
     box-sizing: border-box;
+    position: relative;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .main-info {
@@ -36,6 +43,7 @@ page {
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
+    margin-top: 20rpx;
 }
 
 .url-container {
@@ -91,9 +99,9 @@ page {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20rpx 0;
     border-bottom: 1px #f2f2f2 solid;
     box-sizing: border-box;
+    line-height: 80rpx;
 }
 
 .country-language {
@@ -111,11 +119,15 @@ page {
 .share-icon image {
     width: 40rpx;
     height: 40rpx;
+    position: absolute;
+    right: 20rpx;
+    bottom: 20rpx;
+    z-index: 9;
 }
 
 .footer-info {
     display: flex;
     justify-content: space-between;
     font-size: 26rpx;
-    margin-top: 50rpx;
+    line-height: 80rpx;
 }

@@ -28,7 +28,7 @@
             <view>其它登录方式</view>
             <view class="wechat-img-container">
                 <button class="auth-button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumberAndUserInfo">
-                    <image src="/static/icons/wechat.png" class="wechat"></image>
+                    <image src="/static/icons/miniapp.png" class="wechat"></image>
                 </button>
             </view>
         </view>

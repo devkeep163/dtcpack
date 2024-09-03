@@ -1,9 +1,0 @@
-<view class="container">
-    <view class="item">
-        <view class="main-content">
-            <text class="content">提升移动设备的浏览体验，增加移动搜索中的展现机会，从而增强网站在移动端的吸引力和竞争力。 规范详细解读： 1、自适应设计：推荐使用自适应设计的移动适配方式，通过同一网址提供相同的 HTML 代码，不考虑用户所使用的设备，但可以根据屏幕尺寸以不同方式呈现内容。 2、代码适配方式：依赖 user-agent 嗅探和 Vary: user-agent HTTP 响应标头来向不同的设备提供不同版本的 HTML； 3、跳转适配：利用单独的网址向每种设备提供不同的 HTML，依赖 user-agent 和 Vary HTTP 标头将用户重定向；
-            </text>
-        </view>
-    </view>
-
-</view>

@@ -1,6 +1,7 @@
 const app = getApp()
 Page({
     data: {
+        isLogin: 0,
         result: {},
         errors: [],
         model_score: [],
@@ -17,15 +18,32 @@ Page({
             menus: ['shareAppMessage', 'shareTimeline']
         })
 
-        // 记录浏览历史
-        app.checkSession().then(() => {
+        // 如果登录，记录浏览历史
+        const isLogin = wx.getStorageSync('isLogin') || 0
+        if(isLogin) {
             app.request({
                 url: '/miniapp/browse/history/create?id=' + option.id,
                 success: (res) => {
                     console.log(res.data);
                 }
             })
-        })
+
+            // 记录并绑定分享人之间的关系(此处会包含自身分享，已过滤)
+            app.request({
+                url: '/miniapp/share/create?id=' + option.id,
+                success: (res) => {
+                    console.log(res.data);
+                }
+            })
+        }
+        else
+        {
+            // 未登录时，本地存储来自分享的诊断ID
+            wx.setStorageSync('share_web_check_id', option.id)
+        }
+
+        // 是否显示登录
+        this.setData({isLogin: isLogin})
 
         // 获取报告结果
         app.request({
@@ -71,7 +89,7 @@ Page({
         console.log('微信好友', this.data.result);
         return {
             path: '/pages/result/index?id=' + this.data.result.id,
-            title: this.data.result.url + '的诊断',
+            title: this.data.result.url + '的诊断报告',
             imageUrl: '/static/icons/exc.png',
             query: 'id=' + this.data.result.id
         }
@@ -80,7 +98,7 @@ Page({
         console.log('朋友圈', this.data.result);
         return {
             path: '/pages/result/index?id=' + this.data.result.id,
-            title: this.data.result.url + '的诊断',
+            title: this.data.result.url + '的诊断报告',
             imageUrl: '/static/icons/exc.png',
             query: 'id=' + this.data.result.id
         }

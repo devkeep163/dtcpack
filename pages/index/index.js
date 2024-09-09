@@ -30,6 +30,21 @@ Page({
                 })
             }
         })
+
+        // 如果本地存储存在分享的诊断ID，则绑定用户关系
+        const share_web_check_id = wx.getStorageSync('share_web_check_id')
+        if (share_web_check_id) {
+            console.log('分享的诊断ID：' + share_web_check_id);
+            app.request({
+                url: '/miniapp/share/create?id=' + share_web_check_id,
+                success: (res) => {
+                    console.log(res.data);
+                    wx.removeStorage({
+                        key: 'share_web_check_id',
+                    })
+                }
+            })
+        }
     },
     onShow() {
         this.refreshData()
@@ -41,6 +56,7 @@ Page({
             app.request({
                 url: '/miniapp/web_check/recent',
                 success: (res) => {
+                    console.log(res);
                     if (res.data.code == 0) {
                         const exists = res.data.data.exists
                         this.setData({

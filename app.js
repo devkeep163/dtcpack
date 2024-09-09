@@ -51,15 +51,15 @@ App({
 
     // 统一请求
     request(params) {
+        const originalSuccess = params.success;
         params.url = this.globalData.host + params.url
         const username = wx.getStorageSync('username') || null
         if (username) {
             params.header = {
-                email: username
+                username: username
             };
         }
 
-        // 是否显示加载动画
         if (params.isLoading) {
             wx.showLoading({
                 title: '请稍后...',
@@ -67,6 +67,28 @@ App({
             params.complete = function () {
                 wx.hideLoading();
             }
+        }
+        params.success = function(res) {
+            if(200 == res.statusCode) {
+                originalSuccess(res)
+            }
+            else
+            {
+                wx.showToast({
+                    duration: 2000,
+                    icon: 'none',
+                    title: res.data.msg
+                })
+                wx.clearStorage()
+            }
+        }
+        params.fail = function(err) {
+            console.log(err);
+            wx.showToast({
+                duration: 2500,
+                icon: 'none',
+                title: '请求异常',
+            })
         }
         wx.request(params);
     },
@@ -87,19 +109,26 @@ App({
                 success: (res) => {
                     console.log(res.data);
                     if (res.data.code == 0) {
-                        if (res.data.data.email) {
-                            wx.setStorageSync('username', res.data.data.email)
-                            wx.setStorageSync('role', res.data.data.role)
-                            wx.setStorageSync('isLogin', 1)
-                            resolve(res.data)
-                        } else {
-                            wx.redirectTo({
-                                url: '/pages/bind_email/index?phone=' + res.data.data.phone
-                            })
-                        }
+                        wx.setStorageSync('username', res.data.data.username)
+                        wx.setStorageSync('role', res.data.data.role)
+                        wx.setStorageSync('isLogin', 1)
+
+                        // 跳转到首页
+                        wx.switchTab({
+                            url: '/pages/index/index',
+                        })
+
+                        // 跳转到绑定邮箱
+                        // if (res.data.data.email) {
+                        //     resolve(res.data)
+                        // } else {
+                        //     wx.redirectTo({
+                        //         url: '/pages/bind_email/index'
+                        //     })
+                        // }
                     } else {
                         wx.showToast({
-                            icon: 'error',
+                            icon: 'none',
                             duration: 2000,
                             title: res.data.msg,
                         })
@@ -143,5 +172,14 @@ App({
     // base64_encode
     base64Encode() {
         return btoa(unescape(encodeURIComponent(str)));
+    },
+
+    // 提示框
+    toast(msg) {
+        wx.showToast({
+            duration: 2000,
+            icon: 'none',
+            title: msg
+        })
     }
 })

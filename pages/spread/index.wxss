@@ -81,11 +81,25 @@ page {
     height: 80rpx;
     line-height: 80rpx;
     font-size: 26rpx;
-    padding: 15rpx;
+    padding: 20rpx 0;
 }
 
 .create-date {
+    display: flex;
+}
+
+.create-date text{
     color: #999;
+}
+
+.create-date-title {
+    width: 20%;
+}
+
+.create-date-text {
+    width: 70%;
+    line-height: 40rpx;
+    overflow-wrap: break-word;
 }
 
 
@@ -143,6 +157,11 @@ page {
 .menu-item:first-child {
     justify-content: left;
     gap: 30rpx;
+}
+
+.label-res {
+    width: 300rpx;
+    overflow-wrap: break-word;
 }
 
 .menu-right {

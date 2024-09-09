@@ -13,6 +13,7 @@
         </view>
         <view class="login-button-container">
             <button class="login-button" bindtap="bind">立即绑定</button>
+            <view style="text-align: center; color: #666; padding: 40rpx 0; font-size: 26rpx;" bind:tap="skipBinding">暂不绑定</view>
         </view>
         <view class="other-container">
             <navigator url="/pages/login/index" open-type="redirect">

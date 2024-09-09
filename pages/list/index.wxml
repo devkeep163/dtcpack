@@ -8,17 +8,23 @@
                     <text class="label">网址：</text>
                     <text class="url">{{item.url}}</text>
                 </view>
-                <view class="score-container good" wx:if="{{ item.score > 60 }}">
-                    <image src="/static/icons/good.png" mode="aspectFit"></image>
-                    <text class="score">{{item.score}}分</text>
+                <view wx:if="{{ item.status == 1 }}">
+                    <view class="score-container good" wx:if="{{ item.score > 60 }}">
+                        <image src="/static/icons/good.png" mode="aspectFit"></image>
+                        <text class="score">{{item.score}}分</text>
+                    </view>
+                    <view class="score-container fair" wx:elif="{{ item.score > 50 }}">
+                        <image src="/static/icons/fair.png" mode="aspectFit"></image>
+                        <text class="score">{{item.score}}分</text>
+                    </view>
+                    <view class="score-container poor" wx:else>
+                        <image src="/static/icons/poor.png" mode="aspectFit"></image>
+                        <text class="score">{{item.score}}分</text>
+                    </view>
                 </view>
-                <view class="score-container fair" wx:elif="{{ item.score > 50 }}">
-                    <image src="/static/icons/fair.png" mode="aspectFit"></image>
-                    <text class="score">{{item.score}}分</text>
-                </view>
-                <view class="score-container poor" wx:else>
-                    <image src="/static/icons/poor.png" mode="aspectFit"></image>
-                    <text class="score">{{item.score}}分</text>
+                <view class="status-container" wx:else>
+                    <text wx:if="{{ item.status == 0 }}" style="color: #815df2;">诊断中</text>
+                    <text wx:if="{{ item.status == 2 }}" style="color: #ff1234;">诊断失败</text>
                 </view>
             </view>
             <view class="sub-info">

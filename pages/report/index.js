@@ -24,7 +24,7 @@ Page({
     },
     onLoad() {
         const role = wx.getStorageSync('role')
-        if('am' == role || 'channel' == role)
+        if('am' == role || 'channel' == role || 'admin' == role)
         {
             this.setData({isWebAnalysis: true})
         }
@@ -99,37 +99,42 @@ Page({
         let id = e.currentTarget.dataset.id;
         let status = e.currentTarget.dataset.status;
         let index = e.currentTarget.dataset.index;
-        // if (status == 1) {
-        //     wx.navigateTo({
-        //         url: '/pages/result/index?id=' + id,
-        //     })
-        // } else {
-        //     wx.navigateTo({
-        //         url: '/pages/loading/index?id=' + id,
-        //     })
-        // }
 
+        // 诊断
         if (this.data.currentIndex == 0 || this.data.currentIndex == 1) {
             if (status == 1) {
                 wx.navigateTo({
                     url: '/pages/result/index?id=' + id,
                 })
-            } else {
+            } 
+            if (status == 0) {
                 wx.navigateTo({
                     url: '/pages/loading/index?id=' + id,
                 })
-            }
+            } 
+            if (status == 2) {
+                wx.navigateTo({
+                    url: '/pages/loading/index?id=' + id + '&title=对不起，您的网站诊断失败',
+                })
+            } 
         }
 
-        if (this.data.currentIndex == 1) {
+        // 分析
+        if (this.data.currentIndex == 2) {
             if (status == 1) {
                 console.log(this.data.list[index].base64_id, this.data.list[index].base64_user_id);
                 wx.navigateTo({
                     url: '/pages/result_analysis/index?id=' + this.data.list[index].base64_id + '&user_id=' + this.data.list[index].base64_user_id,
                 })
-            } else {
+            } 
+            if (status == 0) {
                 wx.navigateTo({
-                    url: '/pages/loading/index?id=' + id,
+                    url: '/pages/loading/index?id=' + id + '&title=网站正在分析中'
+                })
+            }
+            if (status == 2) {
+                wx.navigateTo({
+                    url: '/pages/loading/index?id=' + id + '&title=对不起，您的网站分析失败'
                 })
             }
         }

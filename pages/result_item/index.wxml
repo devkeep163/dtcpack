@@ -31,17 +31,24 @@
     </view>
     <view class="item" wx:for="{{models.model_1_data}}" wx:key="index">
         <view class="main-info">
-            <view class="checkmark checkmark-green" wx:if="{{item.result[0][0] == 1}}"></view>
-            <view class="checkmark checkmark-red" wx:else></view>
-            <!-- <view class="checkmark checkmark-red"></view> -->
+            <icon class="icon-box-img" type="success" size="38" wx:if="{{item.result[0][0] == 1}}"></icon>
+            <icon class="icon-small" type="cancel" size="38" wx:else></icon>
             <view class="label-container">
                 <text class="label">{{item.title}}</text>
-                <text class="result">{{item.result[0][1]}}</text>
+                <text class="result" wx:if="{{item.result[0][0] == 1}}">{{item.result[0][1]}}</text>
+                <text class="result error" wx:else>{{item.result[0][1]}}</text>
             </view>
         </view>
+
+        <!-- 错误信息 -->
+        <view class="main-error" wx:if="{{item.result[0][2]}}">
+            <view class="error-body">
+                <view class="error-result">文件地址：{{item.result[0][2]}}</view>
+            </view>
+        </view>
+
         <view class="main-content">
-            <text class="content">{{item.content}}
-            </text>
+            <text class="content">{{item.content}}</text>
         </view>
         <!-- <view class="footer" bind:tap="detail">
             <text class="footer-title">查看更多信息</text>
@@ -74,18 +81,74 @@
         </view>
     </view>
     <view class="item" wx:for="{{models.model_2_data}}" wx:key="index">
-        <view class="main-info">
-            <view class="checkmark checkmark-green" wx:if="{{item.result[0][0] == 1}}"></view>
-            <view class="checkmark checkmark-red" wx:else></view>
-            <!-- <view class="checkmark checkmark-red"></view> -->
+        <view class="main-info" wx:if="{{item.result[0][0] == 1}}">
+            <icon class="icon-box-img" type="success" size="38"></icon>
             <view class="label-container">
                 <text class="label">{{item.title}}</text>
-                <text class="result">{{item.result[0][1]}}</text>
+                <text class="result" wx:if="{{ index == 'page_5' }}">{{ item.result[0] }}</text>
+                <text class="result" wx:else>{{ item.result[0][1] }}</text>
             </view>
         </view>
+        <view class="main-info" style="border:none;" wx:else>
+            <icon class="icon-box-img" type="warn" size="38" wx:if="{{item.result[0][0] == 2}}" color="#FF7d00"></icon>
+            <icon class="icon-small" type="success" size="38" wx:elif="{{index == 'page_5'}}"></icon>
+            <icon class="icon-small" type="cancel" size="38" wx:else></icon>
+            <!-- <text class="label">{{item.title}}</text> -->
+            <view class="label-container">
+                <text class="label">{{item.title}}</text>
+                <text class="result error" wx:if="{{ index == 'page_3' }}">{{ item.result[0][1] }}</text>
+                <text class="result error" wx:if="{{ index == 'page_4' }}">{{ item.result[0][1] }}</text>
+                <text class="result" wx:if="{{ index == 'page_5' }}">{{ item.result[0] }}</text>
+            </view>
+        </view>
+        <view class="main-error" style="padding: 0; border-bottom: 1px #f2f2f2 solid;" wx:if="{{item.result[0][0] != 1}}">
+            <view class="error-body" style="gap: 0;" wx:if="{{index == 'page_1' || index == 'page_2' || index == 'page_6'}}">
+                <view class="error-result" style="padding: 16rpx;">文件地址：{{item.result[0][2]}}</view>
+                <text class="result" wx:if="{{ index == 'page_5' }}">{{ item.result[0] }}</text>
+                <text class="result error" style="padding: 16rpx 0;" wx:else>{{ item.result[0][1] }}</text>
+            </view>
+        </view>
+
         <view class="main-content">
-            <text class="content">{{item.content}}
-            </text>
+            <!-- 状态码错误内容 -->
+            <view class="flex-table" wx:if="{{index == 'page_3' }}">
+                <view>
+                    <view class="flex-row">
+                        <view class="flex-cell">状态码</view>
+                        <view class="flex-cell">网址</view>
+                    </view>
+                    <block>
+                        <view wx:for="{{item.result[0][2]}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">
+                            <view class="flex-row" wx:for="{{ val }}" wx:key="i" wx:for-index="i" wx:for-item="res">
+                                <view class="flex-cell">{{idx}}</view>
+                                <view class="flex-cell">{{res}}</view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+
+            <!-- 页面指标错误内容 -->
+            <view class="flex-table" wx:if="{{index == 'page_5' }}">
+                <view>
+                    <view class="flex-row">
+                        <view class="flex-cell">类型</view>
+                        <view class="flex-cell">数值</view>
+                        <view class="flex-cell">结果</view>
+                    </view>
+                    <block>
+                        <view class="flex-row" wx:for="{{item.result[1]}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">
+                            <view class="flex-cell">{{val[1]}}</view>
+                            <view class="flex-cell">{{val[3]}}秒</view>
+                            <view class="flex-cell">{{val[2]}}</view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+
+            <!-- Hreflang标签错误内容 -->
+
+            <text class="content">{{item.content}}</text>
         </view>
         <!-- <view class="footer" bind:tap="detail">
             <text class="footer-title">查看更多信息</text>
@@ -118,15 +181,44 @@
         </view>
     </view>
     <view class="item" wx:for="{{models.model_3_data}}" wx:key="index">
-        <view class="main-info">
-            <view class="checkmark checkmark-green" wx:if="{{item.result[0][0] == 1}}"></view>
-            <view class="checkmark checkmark-red" wx:else></view>
-            <!-- <view class="checkmark checkmark-red"></view> -->
+
+        <view class="main-info" wx:if="{{item.result[0][0] == 1}}">
+            <icon class="icon-box-img" type="success" size="38"></icon>
             <view class="label-container">
                 <text class="label">{{item.title}}</text>
-                <text class="result">{{item.result[0][1]}}</text>
+                <text class="result">{{ item.result[0][1] }}</text>
             </view>
         </view>
+        <view class="main-info" style="border:none;" wx:else>
+            <icon class="icon-box-img" type="warn" size="38" wx:if="{{item.result[0][0] == 2}}" color="#FF7d00"></icon>
+            <icon class="icon-small" type="cancel" size="38" wx:else></icon>
+            <view class="label-container">
+                <text class="label">{{item.title}}</text>
+                <!-- <text class="result error">{{ item.result[0][1] }}</text> -->
+            </view>
+        </view>
+
+        <view class="main-error" style="padding: 0; border-bottom: 1px #f2f2f2 solid;" wx:if="{{item.result[0][0] != 1}}">
+            <view class="error-body" style="gap: 0;" wx:if="{{index == 'seo_1' || index == 'seo_2' || index == 'seo_3' || index == 'seo_4' || index == 'seo_5' || index == 'seo_7'}}">
+                <view class="error-result" style="padding: 16rpx;">文件地址：{{item.result[0][3]}}</view>
+                <text class="result error" style="padding: 16rpx 0;">{{ item.result[0][1] }}</text>
+            </view>
+
+            <!-- H标签 -->
+            <view class="h" wx:if="{{index == 'seo_3'}}">
+                <view class="h-line">
+                    <text>H1 {{item.result[0][2].H1 || 0}}</text>
+                    <text>H2 {{item.result[0][2].H2 || 0}}</text>
+                    <text>H4 {{item.result[0][2].H3 || 0}}</text>
+                </view>
+                <view class="h-line">
+                    <text>H4 {{item.result[0][2].H4 || 0}}</text>
+                    <text>H5 {{item.result[0][2].H5 || 0}}</text>
+                    <text>H6 {{item.result[0][2].H6 || 0}}</text>
+                </view>
+            </view>
+        </view>
+
         <view class="main-content">
             <text class="content">{{item.content}}
             </text>
@@ -161,19 +253,114 @@
             <text>差</text>
         </view>
     </view>
-    <view class="item" wx:for="{{models.model_4_data}}" wx:key="index">
-        <view class="main-info">
-            <view class="checkmark checkmark-green" wx:if="{{item.result[0][0] == 1}}"></view>
-            <view class="checkmark checkmark-red" wx:else></view>
-            <!-- <view class="checkmark checkmark-red"></view> -->
+    <view class="item" wx:for="{{models.model_4_data}}" wx:key="index" wx:if="{{index != 'content_2'}}">
+
+        <view class="main-info" wx:if="{{index == 'content_3'}}">
+     
+            <view class="special">
+                <view class="special-one">
+                    <icon class="icon-box-img" type="success" size="20" wx:if="{{models.model_4_data['content_2'].seo[0][0] == 1}}"></icon>
+                    <icon class="icon-small" type="cancel" size="20" wx:else></icon>
+                    <text class="label">图片诊断</text>
+                </view>
+                <view class="special-one">
+                    <icon class="icon-small" type="cancel" size="20" style="opacity: 0;"></icon>
+                    <text class="result">图片数量：{{models.model_4_data['content_2'].result[0][1]}}</text>
+                </view>
+                <view class="special-one">
+                    <icon class="icon-small" type="cancel" size="20" style="opacity: 0;"></icon>
+                    <text class="result">Alt标签数量：{{models.model_4_data['content_2'].result[0][2]}}</text>
+                </view>
+                <view class="special-one">
+                    <icon class="icon-box-img" type="success" size="20" wx:if="{{models.model_4_data['content_2'].seo[0][0] == 1}}"></icon>
+                    <icon class="icon-small" type="cancel" size="20" wx:else></icon>
+                    <text class="label">Alt标签</text>
+                </view>
+                <view class="special-one">
+                    <icon class="icon-small" type="cancel" size="20" style="opacity: 0;"></icon>
+                    <text class="result error">{{models.model_4_data['content_2'].seo[0][1]}}</text>
+                </view>
+
+                <view class="special-one">
+                    <icon class="icon-box-img" type="success" size="20" wx:if="{{item.result[0][0] == 1}}"></icon>
+                    <icon class="icon-small" type="cancel" size="20" wx:else></icon>
+                    <text class="label">{{item.title}}</text>
+                    <text class="result"></text>
+                </view>
+                <view class="special-one">
+                    <icon class="icon-small" type="cancel" size="20" style="opacity: 0;"></icon>
+                    <text class="result">{{ item.result[0][1] }}</text>
+                </view>
+                <view class="special-one">
+                    <icon class="icon-small" type="cancel" size="20" style="opacity: 0;"></icon>
+                    <text class="error-result" style="padding: 16rpx; width: 100%;">图片大小：{{ item.result[0][2] }}</text>
+                </view>
+            </view>
+
+
+        </view>
+
+        <view class="main-info" wx:elif="{{item.result[0][0] == 1}}">
+            <icon class="icon-box-img" type="success" size="38"></icon>
             <view class="label-container">
                 <text class="label">{{item.title}}</text>
-                <text class="result">{{item.result[0][1]}}</text>
+                <text class="result">{{ item.result[0][1] }}</text>
             </view>
         </view>
+        <view class="main-info" style="border:none;" wx:else>
+            <icon class="icon-box-img" type="warn" size="38" wx:if="{{item.result[0][0] == 2}}" color="#FF7d00"></icon>
+            <icon class="icon-small" type="cancel" size="38" wx:else></icon>
+            <view class="label-container">
+                <text class="label">{{item.title}}</text>
+                <!-- <text class="result error">{{ item.result[0][1] }}</text> -->
+            </view>
+        </view>
+
+        <view class="main-error" style="padding: 0; border-bottom: 1px #f2f2f2 solid;" wx:if="{{item.result[0][0] != 1}}">
+            <view class="error-body" style="gap: 0;" wx:if="{{index == 'content_4'}}">
+                <view class="error-result" style="padding: 16rpx;">诊断网址：{{item.result[0][2]}}</view>
+                <text class="result error" style="padding: 16rpx 0;">{{ item.result[0][1] }}</text>
+            </view>
+        </view>
+
         <view class="main-content">
             <text class="content">{{item.content}}
             </text>
+
+            <!-- 关键词相关性（网页主要关键词统计） -->
+            <view class="flex-table" wx:if="{{index == 'content_4'}}">
+                <view style="width: 100%; text-align: center; padding: 30rpx;">网页主要关键词统计</view>
+                <view class="flex-row">
+                    <view class="flex-cell">单个关键词</view>
+                    <view class="flex-cell">出现次数</view>
+                </view>
+                <block>
+                    <view class="flex-row" wx:for="{{item.keywords[0][1][0]}}" wx:key="i" wx:for-index="i" wx:for-item="res">
+                        <view class="flex-cell">{{i}}</view>
+                        <view class="flex-cell">{{res}}</view>
+                    </view>
+                </block>
+                <view class="flex-row">
+                    <view class="flex-cell">二词短语</view>
+                    <view class="flex-cell">出现次数</view>
+                </view>
+                <block>
+                    <view class="flex-row" wx:for="{{item.keywords[0][1][1]}}" wx:key="i" wx:for-index="i" wx:for-item="res">
+                        <view class="flex-cell">{{i}}</view>
+                        <view class="flex-cell">{{res}}</view>
+                    </view>
+                </block>
+                <view class="flex-row">
+                    <view class="flex-cell">三词短语</view>
+                    <view class="flex-cell">出现次数</view>
+                </view>
+                <block>
+                    <view class="flex-row" wx:for="{{item.keywords[0][1][2]}}" wx:key="i" wx:for-index="i" wx:for-item="res">
+                        <view class="flex-cell">{{i}}</view>
+                        <view class="flex-cell">{{res}}</view>
+                    </view>
+                </block>
+            </view>
         </view>
         <!-- <view class="footer" bind:tap="detail">
             <text class="footer-title">查看更多信息</text>
@@ -207,18 +394,31 @@
     </view>
     <view class="item last-item" wx:for="{{models.model_5_data}}" wx:key="index">
         <view class="main-info">
-            <view class="checkmark checkmark-green" wx:if="{{item.result[0][0] == 1}}"></view>
-            <view class="checkmark checkmark-red" wx:else></view>
-            <!-- <view class="checkmark checkmark-red"></view> -->
+            <icon class="icon-box-img" type="success" size="38" wx:if="{{item.result[0][0] == 1}}"></icon>
+            <icon class="icon-small" type="cancel" size="38" wx:else></icon>
             <view class="label-container">
                 <text class="label">{{item.title}}</text>
                 <text class="result">{{item.result[0][1]}}</text>
             </view>
         </view>
-        <!-- <view class="main-content">
-            <text class="content">{{item.content}}
-            </text>
-        </view> -->
+        <view class="main-content" wx:if="{{ index == 'media_2' && item.result[0][2] }}">
+            <!-- Open Graph元标签 -->
+            <view class="flex-table">
+                <view class="flex-row">
+                    <view class="flex-cell">标签</view>
+                    <view class="flex-cell">内容</view>
+                </view>
+                <block wx:for="{{ item.result[0][2] }}" wx:key="i" wx:for-index="i" wx:for-item="res">
+                    <view class="flex-row">
+                        <view class="flex-cell">{{i}}</view>
+                        <view class="flex-cell">{{res}}</view>
+                    </view>
+                </block>
+            </view>
+
+            <!-- <text class="content">{{item.content}}
+            </text> -->
+        </view>
         <!-- <view class="footer" bind:tap="detail">
             <text class="footer-title">查看更多信息</text>
             <view class="arrow-icon"></view>

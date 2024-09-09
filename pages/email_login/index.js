@@ -13,12 +13,14 @@ Page({
     },
     // 登录
     login: function () {
-        wx.showLoading({
-            title: '请稍后...',
-        })
-        wx.request({
-            url: app.globalData.host + '/miniapp/email/login',
+        if(!this.data.email || !this.data.code) {
+            app.toast('邮箱或验证码不能为空')
+            return;
+        }
+        app.request({
+            url: '/miniapp/email/login',
             method: 'POST',
+            isLoading: true,
             data: {
                 email: this.data.email,
                 code: this.data.code
@@ -27,7 +29,7 @@ Page({
                 console.log(res.data);
                 if(res.data.code == 0)
                 {
-                    wx.setStorageSync('username', res.data.data.email)
+                    wx.setStorageSync('username', res.data.data.username)
                     wx.setStorageSync('role', res.data.data.role)
                     wx.setStorageSync('isLogin', 1)
                     wx.switchTab({
@@ -36,18 +38,8 @@ Page({
                 }
                 else
                 {
-                    wx.showToast({
-                        duration: 2000,
-                        icon: 'error',
-                        title: res.data.msg
-                    })
+                    app.toast(res.data.msg)
                 }
-            },
-            fail: (err) => {
-                console.log(err);
-            },
-            complete: () => {
-                wx.hideLoading()
             }
         });
     },

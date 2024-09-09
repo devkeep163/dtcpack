@@ -289,3 +289,13 @@
 </view>
 
 <!-- <view class="add-button" bindtap="add"></view> -->
+
+<view class="login-bar" wx:if="{{isLogin == 0}}">
+    <text>您还没有登录哦!</text>
+    <navigator url="/pages/login/index" open-type="navigate">去登录</navigator>
+    <!-- <view>
+        <button type="primary" size="mini" open-type="getPhoneNumber" bindgetphonenumber="goToLogin">
+            去登录
+        </button>
+    </view> -->
+</view>

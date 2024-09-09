@@ -10,45 +10,31 @@ Page({
     },
 
     onLogin: function () {
-        wx.showLoading({
-            title: '登录中',
-        })
-        wx.request({
-            url: app.globalData.host + '/miniapp/login',
+        if(!this.data.username || !this.data.password) {
+            app.toast('帐户或密码不能为空')
+            return;
+        }
+
+        app.request({
+            url: '/miniapp/login',
             method: 'POST',
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
+            isLoading: true,
             data: {
-                email: this.data.username,
+                username: this.data.username,
                 password: this.data.password
             },
             success: (res) => {
                 console.log(res);
                 if (res.data.code == 0) {
-                    wx.setStorageSync('username', res.data.data.email)
+                    wx.setStorageSync('username', res.data.data.username)
                     wx.setStorageSync('role', res.data.data.role)
                     wx.setStorageSync('isLogin', 1)
                     wx.switchTab({
                         url: '/pages/index/index'
                     })
                 } else {
-                    wx.showToast({
-                        duration: 2500,
-                        icon: 'none',
-                        title: res.data.msg
-                    })
+                    app.toast(res.data.msg)
                 }
-            },
-            complete() {
-                wx.hideLoading()
-            },
-            fail(err) {
-                console.log(err);
-                wx.showToast({
-                    icon: 'error',
-                    title: '请求异常',
-                })
             }
         })
     },

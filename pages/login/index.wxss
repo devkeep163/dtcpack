@@ -83,10 +83,10 @@
 }
 
 .wechat {
-    margin-top: 30rpx;
-    width: 80rpx;
-    height: 80rpx;
+    width: 100%;
+    height: 100%;
 }
 .auth-button {
     background: none;
+    width: 600rpx !important;
 }

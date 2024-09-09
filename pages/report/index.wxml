@@ -11,12 +11,13 @@
 
     <view class="item" wx:for="{{list}}" wx:key="index">
         <view class="item-container" bind:tap="goToResult" data-id="{{item.id}}" data-status="{{item.status}}" data-index="{{index}}">
-            <view class="main-info">
+            <!-- 网站诊断 -->
+            <view class="main-info" wx:if="{{item.url}}">
                 <view class="url-container">
                     <text class="label">网址：</text>
-                    <text class="url">{{item.url || item.my_url}}</text>
+                    <text class="url">{{item.url}}</text>
                 </view>
-                <view wx:if="{{ item.score }}">
+                <view wx:if="{{ item.status == 1 }}">
                     <view class="score-container good" wx:if="{{ item.score > 60 }}">
                         <image src="/static/icons/good.png" mode="aspectFit"></image>
                         <text class="score">{{item.score}}分</text>
@@ -31,11 +32,28 @@
                     </view>
                 </view>
                 <view class="status-container" wx:else>
-                    <text wx:if="{{ item.status == 1 }}">已完成</text>
-                    <text wx:elif="{{ item.status == 2 }}">诊断失败</text>
-                    <text wx:else>进行中</text>
+                    <text wx:if="{{ item.status == 0 }}" style="color: #815df2;">诊断中</text>
+                    <text wx:if="{{ item.status == 2 }}" style="color: #ff1234;">诊断失败</text>
                 </view>
             </view>
+
+            <!-- 网站分析 -->
+            <view class="main-info" wx:if="{{item.my_url}}">
+                <view class="url-container">
+                    <text class="label">网址：</text>
+                    <text class="url">{{item.my_url}}</text>
+                </view>
+                <view class="status-container" wx:if="{{ item.status == 0 }}">
+                    <text style="color: #815df2;">分析中</text>
+                </view>
+                <view class="status-container" wx:if="{{ item.status == 1 }}">
+                    <text class="score" style="color: #999;">已完成</text>
+                </view>
+                <view class="status-container" wx:if="{{ item.status == 2 }}">
+                    <text class="score" style="color: #ff1234;">分析失败</text>
+                </view>
+            </view>
+
             <view class="sub-info">
                 <view class="country-language">
                     <text>国家：{{item.country}}</text>

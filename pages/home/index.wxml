@@ -85,7 +85,8 @@
                 <image src="/static/icons/account_email.png" class="menu-icon"></image>
                 <text class="menu-label">邮箱</text>
             </view>
-            <text class="menu-item-right">{{user.email}}</text>
+            <text class="menu-item-right" wx:if="{{user.email}}">{{user.email}}</text>
+            <text class="menu-item-right" bind:tap="bindEmail" wx:else>请绑定邮箱</text>
         </view>
         <view class="menu-item">
             <view class="menu-item-left">

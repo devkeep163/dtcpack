@@ -30,11 +30,17 @@ Page({
             wx.navigateTo({
                 url: '/pages/result/index?id=' + id,
             })
-        } else {
+        } 
+        if (status == 0) {
             wx.navigateTo({
                 url: '/pages/loading/index?id=' + id,
             })
-        }
+        } 
+        if (status == 2) {
+            wx.navigateTo({
+                url: '/pages/loading/index?id=' + id + '&title=对不起，您的网站诊断失败',
+            })
+        } 
     },
 
     // 分享显示
@@ -74,7 +80,7 @@ Page({
         if (data.status == 1) {
             return {
                 path: '/pages/result/index?id=' + data.id,
-                title: data.url + '的诊断',
+                title: data.url + '的诊断报告',
                 imageUrl: '/static/icons/exc.png',
                 query: 'id=' + data.id
             }
@@ -82,7 +88,7 @@ Page({
         if (data.status == 0) {
             return {
                 path: '/pages/loading/index?id=' + data.id + '&title=诊断正在进行中',
-                title: data.url + '的诊断',
+                title: data.url + '的诊断报告',
                 imageUrl: '/static/icons/exc.png',
                 query: 'id=' + data.id
             }
@@ -90,7 +96,7 @@ Page({
         if (data.status == 2) {
             return {
                 path: '/pages/loading/index?id=' + data.id + '&title=很遗憾，您的网站存在限制或访问异常，无法进行诊断',
-                title: data.url + '的诊断',
+                title: data.url + '的诊断报告',
                 imageUrl: '/static/icons/exc.png',
                 query: 'id=' + data.id
             }

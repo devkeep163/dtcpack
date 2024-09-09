@@ -14,7 +14,6 @@ Page({
                 console.log(options.role);
                 app.request({
                     url: '/miniapp/auth/info',
-                    isLoading: true,
                     success: (res) => {
                         console.log(res.data);
                         this.setData({
@@ -42,9 +41,7 @@ Page({
             cancelText: '取消',
             success: (res) => {
                 if (res.confirm) {
-                    wx.removeStorageSync('username')
-                    wx.removeStorageSync('role')
-                    wx.removeStorageSync('isLogin')
+                    wx.clearStorage()
 
                     // 初始化参数
                     this.setData({
@@ -102,6 +99,13 @@ Page({
             wx.navigateTo({
                 url: '/pages/spread/index',
             })
+        })
+    },
+
+    // 绑定邮箱
+    bindEmail() {
+        wx.navigateTo({
+            url: '/pages/bind_email/index',
         })
     },
 

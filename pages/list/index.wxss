@@ -131,3 +131,7 @@ page {
     font-size: 26rpx;
     line-height: 80rpx;
 }
+
+.status-container {
+    font-size: 24rpx;
+}

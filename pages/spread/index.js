@@ -9,11 +9,11 @@ Page({
     },
     onShow() {
         app.request({
-            url: '/miniapp/auth/user_shares',
+            url: '/miniapp/share/list',
             isLogin: true,
             isLoading: true,
             success: (res) => {
-                console.log(res.data.data.length);
+                console.log(res.data.data);
                 this.setData({
                     data: res.data.data,
                     count: res.data.data.length,
@@ -22,7 +22,7 @@ Page({
         })
     },
     // 打开弹窗
-    openPopup: function () {
+    openPopup: function (e) {
         const index = e.currentTarget.dataset.index;
         this.setData({
             selectedData: this.data.data[index],

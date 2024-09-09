@@ -101,10 +101,10 @@ page {
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 30rpx 20rpx;
+    padding: 0 20rpx;
     justify-content: center;
     box-sizing: border-box;
-    gap: 20rpx;
+    margin-bottom: 20rpx;
 }
 
 .main-info {
@@ -112,6 +112,8 @@ page {
     align-items: center;
     box-sizing: border-box;
     gap: 20rpx;
+    border-bottom: 1px #f2f2f2 solid;
+    padding: 20rpx 0;
 }
 
 .checkmark {
@@ -148,15 +150,45 @@ page {
     gap: 10rpx;
     width: calc(100% - 100rpx);
 }
+
 .result {
-    color: #999;
+    color: #666;
     font-size: 24rpx;
 }
 
-.main-content {
-    border-top: 1px #f2f2f2 solid;
-    border-bottom: 1px #f2f2f2 solid;
+.error {
+    color: #ff1234 !important;
+}
+
+/* 错误样式 */
+.main-error {
+    display: flex;
+    flex-direction: column;
     padding: 20rpx 0;
+    gap: 10rpx;
+}
+.error-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15rpx;
+}
+.error-result {
+    padding: 15rpx;
+    box-sizing: border-box;
+    background: #F4F5FB;
+    font-size: 26rpx;
+}
+.main-content {
+    padding: 20rpx 0;
+    border-bottom: 1px #f2f2f2 solid;
+}
+
+.error-box-content {
+    display: flex;
+    padding: 20rpx 0;
+    flex-direction: column;
+    color: #666;
+    overflow-wrap: break-word;
 }
 
 .content {
@@ -181,3 +213,80 @@ page {
     border-bottom: 1px #f2f2f2 solid !important;
 }
 
+.flex-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1rpx solid #dee2e6;
+    word-break: break-all;
+    overflow: hidden;
+    background-color: #F4F5FB;
+}
+
+.flex-table-crosswise {
+    display: flex;
+    width: 100%;
+    border: 1rpx solid #dee2e6;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.flex-row {
+    display: flex;
+    width: 100%;
+}
+
+.flex-cell {
+    flex: 1;
+    padding: 10px;
+    border: 1rpx solid #dee2e6;
+    text-align: left;
+    /* 文本对齐方式 */
+    word-wrap: break-word;
+    /* 超出单词自动换行 */
+    white-space: normal;
+    /* 允许正常换行 */
+    word-break: break-all;
+}
+
+
+
+/* H标题 */
+.h {
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+    padding: 10rpx 0;
+    box-sizing: border-box;
+}
+
+.h-line {
+    display: flex;
+    gap: 20rpx;
+}
+
+.h-line text {
+    flex: 1;
+    padding: 5rpx;
+    background: #F4F5FB;
+    text-align: center;
+    font-size: 24rpx;
+}
+
+
+
+/* 图片诊断特殊样式 */
+.special {
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+}
+.special-one {
+    gap: 10rpx;
+    display: flex;
+    align-items: center;
+}
+
+.special-one text {
+    font-size: 24rpx;
+}
